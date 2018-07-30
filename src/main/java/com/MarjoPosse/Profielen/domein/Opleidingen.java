@@ -29,5 +29,6 @@ public long getId() {
 	}
 
 	// hier komen de opleidingen
+	// test
 	String opleiding = "";
 }
