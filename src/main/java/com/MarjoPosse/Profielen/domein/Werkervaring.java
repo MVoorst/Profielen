@@ -6,19 +6,19 @@ import javax.persistence.*;
 public class Werkervaring {
 @GeneratedValue(strategy = GenerationType.AUTO)
 @Id	
-long id;
-String naam;
+private long id;
+private String naam;
 
-long getId() {
+public long getId() {
 	return id;
 }
-void setId(long id) {
+public void setId(long id) {
 	this.id = id;
 }
-String getNaam() {
+public String getNaam() {
 	return naam;
 }
-void setId(String naam) {
+public void setId(String naam) {
 	this.naam = naam;
 }
 }
