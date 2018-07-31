@@ -15,10 +15,10 @@ public long getId() {
 public void setId(long id) {
 	this.id = id;
 }
-public String getNaam() {
+public String getVoornaam() {
 	return naam;
 }
-public void setId(String naam) {
+public void setVoornaam(String naam) {
 	this.naam = naam;
 }
 }

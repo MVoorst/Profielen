@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.MarjoPosse.Profielen.domein.*;
 @Service
 @Transactional
-public class ProfielenService {
+public class WerkervaringService {
 	
 	@Autowired
-	private ProfielenRepository werkervaringRepository;
+	private WerkervaringRepository werkervaringRepository;
 
 	public Werkervaring save(Werkervaring werkervaring){
 		return werkervaringRepository.save(werkervaring);

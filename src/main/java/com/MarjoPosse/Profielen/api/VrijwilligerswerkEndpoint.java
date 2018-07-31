@@ -14,25 +14,25 @@ import org.springframework.stereotype.Component;
 import com.MarjoPosse.Profielen.domein.*;
 import com.MarjoPosse.Profielen.controller.*;
 
-@Path("werkervaring")
+@Path("vrijwilligerswerk")
 @Component
-public class WerkervaringEndpoint {
+public class VrijwilligerswerkEndpoint {
 	
 	@Autowired
-	private WerkervaringService werkervaringService;
+	private VrijwilligerswerkService vrijwilligerswerkService;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listGroep(){
-		Iterable <Werkervaring> werkervaringen = werkervaringService.findAll();
-		return Response.ok(werkervaringen).build();
+		Iterable <Vrijwilligerswerk> vrijwilligerswerk = vrijwilligerswerkService.findAll();
+		return Response.ok(vrijwilligerswerk).build();
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response postWerkervaring(Werkervaring werkervaring){
-		Werkervaring result = werkervaringService.save(werkervaring);
-		return Response.accepted(result.getVoornaam()).build();	
+	public Response postWerkervaring(Vrijwilligerswerk vrijwilligerswerk){
+		Vrijwilligerswerk result = vrijwilligerswerkService.save(vrijwilligerswerk);
+		return Response.accepted(result.getId()).build();	
 	}
 }

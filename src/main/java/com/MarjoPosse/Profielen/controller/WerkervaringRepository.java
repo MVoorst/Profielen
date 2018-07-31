@@ -5,5 +5,5 @@ import org.springframework.stereotype.Component;
 import com.MarjoPosse.Profielen.domein.Werkervaring;
 
 @Component
-public interface ProfielenRepository extends CrudRepository<Werkervaring, Long>{
+public interface WerkervaringRepository extends CrudRepository<Werkervaring, Long>{
 	}
