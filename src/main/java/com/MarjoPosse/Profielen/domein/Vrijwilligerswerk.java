@@ -11,33 +11,41 @@ public class Vrijwilligerswerk {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private boolean prik;
-	private String verpakking;
-	private int prijs;
+	private String naam;
+	private String noemVrijWilWerk;
+	private String functie;
+	private int nJarenGewerkt;
 	private int hoeveelheid;
+	
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public boolean isPrik() {
-		return prik;
+	public String getNaam() {
+		return naam;
 	}
-	public void setPrik(boolean prik) {
-		this.prik = prik;
+	public void setNaam(String naam) {
+		this.naam = naam;
 	}
-	public String getVerpakking() {
-		return verpakking;
+	public String getNoemVrijWilWerk() {
+		return noemVrijWilWerk;
 	}
-	public void setVerpakking(String verpakking) {
-		this.verpakking = verpakking;
+	public void setNoemVrijWilWerk(String noemVrijWilWerk) {
+		this.noemVrijWilWerk = noemVrijWilWerk;
 	}
-	public int getPrijs() {
-		return prijs;
+	public String getFunctie() {
+		return functie;
 	}
-	public void setPrijs(int prijs) {
-		this.prijs = prijs;
+	public void setFunctie(String functie) {
+		this.functie = functie;
+	}
+	public int getnJarenGewerkt() {
+		return nJarenGewerkt;
+	}
+	public void setnJarenGewerkt(int nJarenGewerkt) {
+		this.nJarenGewerkt = nJarenGewerkt;
 	}
 	public int getHoeveelheid() {
 		return hoeveelheid;

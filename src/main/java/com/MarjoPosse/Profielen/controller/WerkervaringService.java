@@ -21,6 +21,9 @@ public class WerkervaringService {
 	public Optional<Werkervaring> findById(Long id) {
 		return werkervaringRepository.findById(id);
 	}
+	public void delete(Werkervaring werkervaring){
+		werkervaringRepository.delete(werkervaring);
+		}
 	
 	public Iterable <Werkervaring> findAll(){
 		Iterable <Werkervaring> result = werkervaringRepository.findAll();

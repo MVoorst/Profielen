@@ -21,9 +21,14 @@ public class VrijwilligerswerkService {
 	public Optional<Vrijwilligerswerk> findById(Long id) {
 		return vrijwilligerswerkRepository.findById(id);
 	}
+	public void delete(Vrijwilligerswerk vrijwilligerswerk){
+		vrijwilligerswerkRepository.delete(vrijwilligerswerk);
+	}
 	
 	public Iterable <Vrijwilligerswerk> findAll(){
 		Iterable <Vrijwilligerswerk> result = vrijwilligerswerkRepository.findAll();
 		return result;
 	}
+
+
 }
