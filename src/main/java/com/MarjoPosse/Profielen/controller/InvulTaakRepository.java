@@ -2,10 +2,8 @@ package com.MarjoPosse.Profielen.controller;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
-
-import com.MarjoPosse.Profielen.domein.Vrijwilligerswerk;
+import com.MarjoPosse.Profielen.domein.InvulTaak;
 
 @Component
-public interface VrijwilligerswerkRepository extends CrudRepository<Vrijwilligerswerk, Long>{
+public interface InvulTaakRepository extends CrudRepository<InvulTaak, Long>{
 	}
-
