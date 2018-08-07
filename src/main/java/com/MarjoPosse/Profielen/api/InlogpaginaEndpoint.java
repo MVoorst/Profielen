@@ -20,7 +20,7 @@ import com.MarjoPosse.Profielen.controller.*;
 @Component
 public class InlogpaginaEndpoint {
 	
-	@Autowired
+	/*@Autowired
 	private InlogpaginaService inlogpaginaService;
 
 	@GET
@@ -54,5 +54,5 @@ public class InlogpaginaEndpoint {
 	public Response deleteInlogpagina(Inlogpagina inlogpagina) {
 		inlogpaginaService.delete(inlogpagina);
 		return Response.accepted(inlogpagina.getGebruikersnaam()).build();
-	}
+	}*/
 }

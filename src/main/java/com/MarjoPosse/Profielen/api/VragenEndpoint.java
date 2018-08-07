@@ -16,40 +16,40 @@ import org.springframework.stereotype.Component;
 import com.MarjoPosse.Profielen.domein.*;
 import com.MarjoPosse.Profielen.controller.*;
 
-@Path("werkervaring")
+@Path("vragen")
 @Component
-public class WerkervaringEndpoint {
+public class VragenEndpoint {
 	
 	@Autowired
-	private WerkervaringService werkervaringService;
+	private VragenService vragenService;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listGroep(){
-		Iterable <Werkervaring> werkervaringen = werkervaringService.findAll();
-		return Response.ok(werkervaringen).build();
+		Iterable <Vragen> vragen = vragenService.findAll();
+		return Response.ok(vragen).build();
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response postWerkervaring(Werkervaring werkervaring){
-		Werkervaring result = werkervaringService.save(werkervaring);
+	public Response postVragen(Vragen vragen){
+		Vragen result = vragenService.save(vragen);
 		return Response.accepted(result.getVoornaam()).build();	
 	}
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response putWerkervaring(Werkervaring werkervaring) {
-		Werkervaring result = werkervaringService.save(werkervaring);
+	public Response putVragen(Vragen vragen) {
+		Vragen result = vragenService.save(vragen);
 		return Response.accepted(result.getVoornaam()).build();
 	}
 	
 	@DELETE
 	@Consumes (MediaType.APPLICATION_JSON)
-	public Response deleteWerkervaring(Werkervaring werkervaring) {
-		werkervaringService.delete(werkervaring);
-		return Response.accepted(werkervaring.getVoornaam()).build();
+	public Response deleteWerkervaring(Vragen vragen) {
+		vragenService.delete(vragen);
+		return Response.accepted(vragen.getVoornaam()).build();
 	}
 }
