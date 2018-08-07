@@ -6,14 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Vaardigheden {
+public class InvulTaak {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
 	private String merk;
-
+	
 	public long getId() {
 		return id;
 	}

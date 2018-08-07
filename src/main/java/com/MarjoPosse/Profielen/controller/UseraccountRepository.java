@@ -3,9 +3,9 @@ package com.MarjoPosse.Profielen.controller;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-import com.MarjoPosse.Profielen.domein.Inlogpagina;
+import com.MarjoPosse.Profielen.domein.Useraccount;
 
 @Component
-public interface InlogpaginaRepository extends CrudRepository<Inlogpagina, Long>{
+public interface UseraccountRepository extends CrudRepository<Useraccount, Long>{
 	}
 

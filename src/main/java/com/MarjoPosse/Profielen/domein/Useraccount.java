@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Inlogpagina {
+public class Useraccount {
 @GeneratedValue(strategy = GenerationType.AUTO)
 @Id	
 private long id;
