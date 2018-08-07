@@ -1,0 +1,82 @@
+body{
+    padding: 0;
+    background: url(Achtergrond.png);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Titillium Web', sans-serif;
+    text-align: center;
+}
+
+.loginbox{
+    width: 650px;
+    height: 100%;
+    background: #4d004d;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 10% 70px;
+    opacity: 0.7;
+
+}
+
+.avatar{
+    width: 130px;
+    height: 100px;
+    border-radius: 0%;
+    object-position: absolute;
+    text-align: center;
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.loginbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.loginbox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.loginbox input[type="text"], input[type="password"], input[placeholder]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+
+}
+.loginbox input[type="button"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fff;
+    color: #000;
+    font-size: 18px;
+
+}
+.loginbox input[type="button"]:hover
+{
+    cursor: pointer;
+    background: #9d44fb;
+    color: #000;
+}
+
+p {
+    font-size: 15pt;
+}
