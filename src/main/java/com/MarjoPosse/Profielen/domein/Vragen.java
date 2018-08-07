@@ -3,7 +3,7 @@ package com.MarjoPosse.Profielen.domein;
 import javax.persistence.*;
 
 @Entity
-public class Werkervaring {
+public class Vragen {
 @GeneratedValue(strategy = GenerationType.AUTO)
 @Id	
 private long id;
@@ -12,6 +12,8 @@ private String noemWerkgever;
 private String functie;
 private int nJarenErvaring;
 
+@ManyToOne
+private Adminaccount persoon;
 
 public long getId() {
 	return id;

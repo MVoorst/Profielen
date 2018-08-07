@@ -1,23 +1,30 @@
 package com.MarjoPosse.Profielen.domein;
 
+import java.util.Arrays;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Persoonsgegevens {
+public class Adminaccount {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
 	private String voornaam;
 	private String achternaam;
+	private String gebruikersnaam;
+	private String wachtwoord;
 	private String straat;
 	private int huisnummer;
 	private String woonplaats;
 	private int leeftijd;
 	private String geslacht;
+
 	public long getId() {
 		return id;
 	}
@@ -35,6 +42,18 @@ public class Persoonsgegevens {
 	}
 	public void setachternaam(String achternaam) {
 		this.achternaam = achternaam;
+	}
+	public String getGebruikersnaam() {
+		return gebruikersnaam;
+	}
+	public void setGebruikersnaam(String gebruikersnaam) {
+		this.gebruikersnaam = gebruikersnaam;
+	}
+	public String getWachtwoord() {
+		return wachtwoord;
+	}
+	public void setWachtwoord(String wachtwoord) {
+		this.wachtwoord = wachtwoord;
 	}
 	public String getStraat() {
 		return straat;
@@ -66,4 +85,5 @@ public class Persoonsgegevens {
 	public void setGeslacht(String geslacht) {
 		this.geslacht = geslacht;
 	}
+
 }
