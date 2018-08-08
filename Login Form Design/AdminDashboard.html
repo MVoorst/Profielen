@@ -6,27 +6,118 @@
 <body>
     <div class="AdminDashboard">
         <h1>Welkom ADMIN</h1>
-		<p>Op deze pagina kunnen de gegevens voor de studenten aanpassen
-			<br>
-			<br>
+		<p>Op deze pagina kunnen de gegevens voor de studenten aanpassen<br><br>
 		<input type="submit" name="Knop" value="Klas aanmaken">
 		<input type="submit" name="Knop" value="Klas wijzigen">
-		<input type="submit" name="Knop" value="Klas verwijderen">
-			<br>
-
-			<br>
-		<input type="submit" name="Knop" value="Vragen wijzigen">
-			<br>
-			<br>
-	<div class="TabelEen">
+		<input type="submit" name="Knop" value="Klas verwijderen"><br><br>
+		<input type="submit" name="Knop" value="Vragen wijzigen"><br><br>
+		<div class="TabelEen">
 		        <h2>Op deze pagina kunt u de voortgang van de studenten zien</h2>
-		<p>Van welke klas wilt u de voortgang van de CV's zien?
-			<br>
-			<br>
-				<input type="submit" name="Knop" value="JAVA">
-		<input type="submit" name="Knop" value="PHP">
-			<input type="submit" name="Knop" value="Dot.net"></p>
+			<script>
+			function toggle_div_fun(id) {
+			var divelement = document.getElementById(id);
+			
+			if(divelement.style.display == 'none')
+				divelement.style.display = 'block';
+				else
+					divelement.style.display = 'none';
+			}
+			</script>
+		<p>Van welke klas wilt u de voortgang van de CV's zien?<br><br>
+				<input type="submit" name="Knop" value="JAVA" onclick="toggle_div_fun('selectionhidejava')">
+		<input type="submit" name="Knop" value="PHP"onclick="toggle_div_fun('selectionhidephp')">
+			<input type="submit" name="Knop" value="Dot.net"onclick="toggle_div_fun('selectionhidedot')"></p><br><br>		<div id="selectionhidejava">
+				<table> 
+					<table align="center">
+						<tr>
+							<th>Cursus</th>
+							<th>Klas</th>
+							<th>Student</th>
+							<th>CV afgerond</th>
+						</tr>
+						<tr>
+							<td>JAVA</td>
+							<td>Juli 2018</td>
+							<td>Marjolijn</td>
+							<td>Nee</td>
+						</tr>
+						<tr>
+							<td>JAVA</td>
+							<td>Juli 2018</td>
+							<td>Tes</td>
+							<td>ja</td>
+						</tr>
+						<tr>
+							<td>JAVA</td>
+							<td>Juli 2018</td>
+							<td>Crispijn</td>
+							<td>Nee</td>
+						</tr>
+				</table>
+					</div>
+			<div id="selectionhidephp">
+					<table> 
+					<table align="center">
+						<tr>
+							<th>Cursus</th>
+							<th>Klas</th>
+							<th>Student</th>
+							<th>CV afgerond</th>
+						</tr>
+						<tr>
+							<td>PHP</td>
+							<td>Juli 2018</td>
+							<td>Marjolijn</td>
+							<td>Nee</td>
+						</tr>
+						<tr>
+							<td>PHP</td>
+							<td>Juli 2018</td>
+							<td>Tes</td>
+							<td>ja</td>
+						</tr>
+						<tr>
+							<td>PHP</td>
+							<td>Juli 2018</td>
+							<td>Crispijn</td>
+							<td>Nee</td>
+						</tr>
+				</table>
+						</div>
+				<div id="selectionhidedot">
+						<table> 
+					<table align="center">
+						<tr>
+							<th>Cursus</th>
+							<th>Klas</th>
+							<th>Student</th>
+							<th>CV afgerond</th>
+						</tr>
+						<tr>
+							<td>Dot.net</td>
+							<td>Juli 2018</td>
+							<td>Marjolijn</td>
+							<td>Nee</td>
+						</tr>
+						<tr>
+							<td>Dot.net</td>
+							<td>Juli 2018</td>
+							<td>Tes</td>
+							<td>ja</td>
+						</tr>
+						<tr>
+							<td>Dot.net</td>
+							<td>Juli 2018</td>
+							<td>Crispijn</td>
+							<td>Nee</td>
+						</tr>
+				</table>
+					</div>
+			</div>	
+					
+		</div>
+		
 	</div>
-			</div>
+
 </body>
 </html>
