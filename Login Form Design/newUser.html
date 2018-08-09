@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>Qien Admin Inlog</title>
@@ -9,15 +10,29 @@
     <form>
         <form>
         <fieldset class="Nieuwe Gebruiker">
-            Gebruikersnaam: <br>
-            <input type="text" name="Gebruikersnaam" placeholder="Gebruikersnaam"  id="Gebruikersnaam"><br>
-            Email: <br>
-            <input type="text" name="Email" placeholder="Email" id="mail"><br>
-            <button type="button" id="name" onclick= "nieuweUser()">Gebruiker Aanmaken</button>
-
+			        <h1>Aanmaken nieuwe student </h1>
+		<p>Op deze pagina kunt u nieuwe studenten aanmaken. Deze krijgen automatisch een wachtwoord meegestuurd. </p>
+			<form action="mailto:kiryzich@yahoo.com?subject=Formulier" method="post" enctype="text/plain"> 
+			  Gegevens student:  
+			  <input type="text" name="firstname" placeholder="Voornaam student" id="Voornaam">
+			  <input type="text" name="firstname" placeholder="Tussenvoegsel student"id="Voornaam">
+			  <input type="text" name="firstname" placeholder="Achternaam student"id="Voornaam">
+			  <br><br><br>
+			  Contactgegevens student:   
+			  <input type="text" name="lastname" placeholder="Email student" id="email">
+			  <br><br><br>
+			  <input type="submit" value="Aanmaken">
+			  <button type="button" id="name" onclick= "nieuweUser()">Gebruiker Aanmaken</button>
+			</form> 
         </fieldset>
     </form>
     </form>
+	
+	<html>
+<body>
+
+</body>
+</html>
 
 </body>
 </head>

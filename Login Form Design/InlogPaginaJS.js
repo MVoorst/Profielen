@@ -50,8 +50,9 @@ function inloggenCheck(inlogPersonenGetIn, inlogPass, inlogUser){
 }
 
 function nieuweUser() {
-	var mailParticipant = (document.getElementById("mail").value);
-	var usernameParticipant = (document.getElementById("name").value);
+	console.log(">>>>>>>>");
+	var mailParticipant = (document.getElementById("email").value);
+	var usernameParticipant = (document.getElementById("Voornaam").value);
 	var yhttp = new XMLHttpRequest();
 
 	var newParticipant = {};
