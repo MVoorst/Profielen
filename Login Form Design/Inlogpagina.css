@@ -1,0 +1,68 @@
+body {
+	background-color: #ffffff;
+	background-image: url(http://vozrojdenie.me/wp-content/uploads/1604-lubuntu-default-wallpaper-neutral-1024x640.png);
+	background-size: cover;
+	background-attachment: fixed;
+	font-family: 'Titillium Web', sans-serif;
+	text-align: center;
+
+}
+#test {
+	opacity: 100%;
+	transition: opacity 2s;
+}
+
+h1 {
+	font-size: 100px;
+	color:#9d44fb;
+	margin-bottom: 10px;
+}
+
+h2 {
+	margin-top: 10px;
+	font-size: 50px;
+	color: white;
+}
+
+fieldset {
+	color: white;
+	font-size: 20pt;
+
+	display: inline-block;
+	padding-left: 90px;
+	padding-right: 90px;
+	padding-bottom: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	border:none;
+}
+
+input {
+	font-size: 20pt;
+	font-family: 'Titillium Web', sans-serif;
+	text-align: center;
+	align-items: center;
+	width: 100%;
+	padding: 12px 20px;
+	margin 8px 0;
+	box-sizing: border-box;
+}
+
+input:focus {
+	background-color: #9d44fb;
+}
+
+button{
+	width: 100px;
+	height: 40px;
+	margin-top: 30px;
+
+}
+
+button:hover{
+	color: black;
+	background-color: #9d44fb;
+}
+#Qien:hover{
+	color: white;
+}
