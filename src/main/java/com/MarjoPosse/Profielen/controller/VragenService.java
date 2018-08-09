@@ -28,11 +28,12 @@ public class VragenService {
 	public void deleteById(Long id) { //toegevoegd door Cris
 		vragenRepository.deleteById(id);
 	}
-	
-	
-	
 	public Iterable <Vragen> findAll(){
 		Iterable <Vragen> result = vragenRepository.findAll();
 		return result;
+	}
+
+	public boolean existsById(Long id) {
+		return vragenRepository.existsById(id);
 	}
 }
