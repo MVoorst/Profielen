@@ -12,6 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,6 +33,17 @@ public class VragenEndpoint {
 		Iterable <Vragen> vragen = vragenService.findAll();
 		return Response.ok(vragen).build();
 	}
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getVragenById(@PathParam("id")Long id) {
+		Optional<Vragen> optionalvragen=this.vragenService.findById(id);
+		if (vragenService.existsById(id)){
+			Optional<Vragen> vragen = vragenService.findById(id);
+			 return Response.ok(vragen).build();
+			}
+		return Response.status(Status.NOT_FOUND).build();
+		}
 	
 
 	@POST

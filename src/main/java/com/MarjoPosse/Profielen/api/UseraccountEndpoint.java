@@ -1,6 +1,7 @@
 package com.MarjoPosse.Profielen.api;
 
 import java.util.Optional;
+import java.util.Random;
 
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
@@ -44,10 +45,41 @@ public class UseraccountEndpoint {
 		return Response.status(Status.NOT_FOUND).build();
 		}	
 
+	//@POST
+	//public Response postInlogpagina(Useraccount useraccount){
+		//Useraccount result = useraccountService.save(useraccount);
+		//return Response.accepted(result.getGebruikersnaam()).build();	
+	//}
 	@POST
-	public Response postInlogpagina(Useraccount useraccount){
-		Useraccount result = useraccountService.save(useraccount);
-		return Response.accepted(result.getGebruikersnaam()).build();	
+	public Response create(Useraccount login) {		
+		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
+		StringBuilder sbGeneratedPassword = new StringBuilder();
+		Random random = new Random();
+	    for (int i = 0; i < 6; i++) {
+	        sbGeneratedPassword.append(characters.charAt(random.nextInt(characters.length())));
+	     }
+		login.setWachtwoord(sbGeneratedPassword.toString());  
+		
+		useraccountService.save (login);		
+		return Response.accepted(login).build();
+	}
+	@POST				
+	@Path("controle")		
+	public Response checkLogin(Useraccount login) {
+		if (login==null) {					
+			return Response.status(Status.NOT_ACCEPTABLE).build();
+		}
+		Optional<Useraccount> result = useraccountService.findByGebruikersnaam(login.getGebruikersnaam());	
+		if (!result.isPresent()) {			
+			return Response.status(Status.NOT_FOUND).build();
+		} 
+											
+		Useraccount fLogin = result.get();		
+		if (fLogin.getWachtwoord().equals(login.getWachtwoord())) {			
+			return Response.accepted(fLogin.getId()).build();					
+		}else {
+			return Response.status(Status.NOT_ACCEPTABLE).build();		
+		}	
 	}
 	
 	/*@POST

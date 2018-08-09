@@ -15,6 +15,7 @@ private String wachtwoord;
 private String emailadres;
 
 private String voornaam;
+private String tussenvoegsel;
 private String achternaam;
 private boolean geslacht;
 private int geboortedatum;
@@ -29,6 +30,12 @@ public String getVoornaam() {
 }
 public void setVoornaam(String voornaam) {
 	this.voornaam = voornaam;
+}
+public String getTussenvoegsel() {
+	return tussenvoegsel;
+}
+public void setTussenvoegsel(String tussenvoegsel) {
+	this.tussenvoegsel = tussenvoegsel;
 }
 public String getAchternaam() {
 	return achternaam;

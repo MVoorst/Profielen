@@ -33,7 +33,9 @@ public class UseraccountService {
 		Iterable <Useraccount> result = useraccountRepository.findAll();
 		return result;
 	}
-
+	public Optional <Useraccount> findByGebruiksernaam (String gebruikersnaam) {
+		return useraccountRepository.findByGebruikersnaam(gebruikersnaam);
+	}	
 	public boolean existsById(Long id) {
 		return false;
 	}
