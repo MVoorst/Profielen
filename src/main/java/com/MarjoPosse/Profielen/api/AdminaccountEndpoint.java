@@ -44,11 +44,18 @@ public class AdminaccountEndpoint {
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}
-	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response addPersoon(Adminaccount adminaccount){
+	public Response postAdminaccount(Adminaccount adminaccount){
+		Adminaccount result = adminaccountService.save(adminaccount);
+		return Response.accepted(result.getGebruikersnaam()).build();	
+	}
+	/*
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response addAdmin(Adminaccount adminaccount){
 		if(adminaccount != null) {
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getId()).build();
@@ -56,7 +63,6 @@ public class AdminaccountEndpoint {
 		System.out.println("persoon toch null");
 		return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 	}
-	/*
 	@POST
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -69,18 +75,19 @@ public class AdminaccountEndpoint {
 		System.out.println("persoon id bestaat niet");
 	return Response.status(Status.NOT_FOUND).build();	
 	}*/
-	@PUT
+	
+	/*@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response putPersoonsgegevens(Adminaccount adminaccount) {
 		Adminaccount result1 = adminaccountService.save(adminaccount);
 		return Response.accepted(result1.getId()).build();
-	}
+	}*/
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteVrijwilligerswerk(Adminaccount adminaccount) {
 		adminaccountService.delete(adminaccount);
-		return Response.accepted(adminaccount.getvoornaam()).build();
+		return Response.accepted(adminaccount.getId()).build();
 	} 
 }

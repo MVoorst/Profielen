@@ -11,7 +11,7 @@ public class InvulTaak {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String merk;
+	private String antwoord;
 	
 	public long getId() {
 		return id;
@@ -21,11 +21,11 @@ public class InvulTaak {
 		this.id = id;
 	}
 
-	public String getMerk() {
-		return merk;
+	public String getAntwoord() {
+		return antwoord;
 	}
 
-	public void setMerk(String merk) {
-		this.merk = merk;
+	public void setAntwoord(String antwoord) {
+		this.antwoord = antwoord;
 	}
 }

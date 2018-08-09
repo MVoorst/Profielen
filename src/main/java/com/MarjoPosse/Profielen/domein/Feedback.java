@@ -11,7 +11,7 @@ public class Feedback {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String merk;
+	private String inhoud;
 	
 	public long getId() {
 		return id;
@@ -21,11 +21,11 @@ public class Feedback {
 		this.id = id;
 	}
 
-	public String getMerk() {
-		return merk;
+	public String getInhoud() {
+		return inhoud;
 	}
 
-	public void setMerk(String merk) {
-		this.merk = merk;
+	public void setInhoud(String inhoud) {
+		this.inhoud = inhoud;
 	}
 }

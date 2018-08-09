@@ -14,15 +14,15 @@ public class AdminaccountService {
 	@Autowired
 	private AdminaccountRepository adminaccountRepository;
 
-	public Adminaccount save(Adminaccount persoon){
-		return adminaccountRepository.save(persoon);
+	public Adminaccount save(Adminaccount adminaccount){
+		return adminaccountRepository.save(adminaccount);
 	}
 
 	public Optional<Adminaccount> findById(Long id) {
 		return adminaccountRepository.findById(id);
 	}
-	public void delete(Adminaccount persoon){
-		adminaccountRepository.delete(persoon);
+	public void delete(Adminaccount adminaccount){
+		adminaccountRepository.delete(adminaccount);
 	}
 	
 	public Iterable <Adminaccount> findAll(){
