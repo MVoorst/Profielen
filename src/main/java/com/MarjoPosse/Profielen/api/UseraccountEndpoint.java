@@ -2,7 +2,7 @@ package com.MarjoPosse.Profielen.api;
 
 import java.util.Optional;
 
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -77,5 +77,19 @@ public class UseraccountEndpoint {
 	public Response deleteInlogpagina(Useraccount useraccount) {
 		useraccountService.delete(useraccount);
 		return Response.accepted(useraccount.getGebruikersnaam()).build();
+	}
+	
+	@DELETE //toegevoegd door Cris
+	@Path("{id}")
+	public Response deleteById(@PathParam("id") Long id) {
+		Optional <Useraccount> optionalToBeDeleted = this.useraccountService.findById(id);
+
+		if(optionalToBeDeleted.isPresent()) {
+			this.useraccountService.deleteById(id); 
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
 	}
 }

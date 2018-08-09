@@ -1,11 +1,14 @@
 package com.MarjoPosse.Profielen.api;
 
+import java.util.Optional;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -54,5 +57,20 @@ public class InlogpaginaEndpoint {
 	public Response deleteInlogpagina(Inlogpagina inlogpagina) {
 		inlogpaginaService.delete(inlogpagina);
 		return Response.accepted(inlogpagina.getGebruikersnaam()).build();
-	}*/
+	}
+	
+	@DELETE //toegevoegd door Cris
+	@Path("{id}")
+	public Response deleteById(@PathParam("id") Long id) {
+	Optional <inlog> optionalToBeDeleted = this.vragenService.findById(id);
+
+		if(optionalToBeDeleted.isPresent()) {
+			this.inlogpaginaService.deleteById(id); 
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+	}
+	*/
 }

@@ -25,6 +25,10 @@ public class AdminaccountService {
 		adminaccountRepository.delete(adminaccount);
 	}
 	
+	public void deleteById(Long id) { //toegevoegd door Cris
+		adminaccountRepository.deleteById(id);
+	}
+	
 	public Iterable <Adminaccount> findAll(){
 		Iterable <Adminaccount> result = adminaccountRepository.findAll();
 		return result;
@@ -33,8 +37,4 @@ public class AdminaccountService {
 	public boolean existsById(Long id) {
 		return false;
 	}
-
-	
-
-
 }

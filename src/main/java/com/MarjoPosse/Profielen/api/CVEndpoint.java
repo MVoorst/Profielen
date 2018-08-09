@@ -2,7 +2,7 @@ package com.MarjoPosse.Profielen.api;
 
 import java.util.*;
 
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,6 +19,9 @@ import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.*;
 import com.MarjoPosse.Profielen.controller.*;
+
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.TEXT_PLAIN)
 
 @Path("cv")
 @Component
@@ -44,9 +47,8 @@ public class CVEndpoint {
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}
+	
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
 	public Response postVrijwilligerswerk(CV cv){
 		
 		CV result = cvService.save(cv);
@@ -68,4 +70,18 @@ public class CVEndpoint {
 		cvService.delete(cv);
 		return Response.accepted(cv.getNaam()).build();
 	} 
+	
+	@DELETE //toegevoegd door Cris
+	@Path("{id}")
+	public Response deleteById(@PathParam("id") Long id) {
+		Optional <CV> optionalToBeDeleted = this.cvService.findById(id);
+
+		if(optionalToBeDeleted.isPresent()) {
+			this.cvService.deleteById(id); 
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+	}
 }

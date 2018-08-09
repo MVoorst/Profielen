@@ -2,7 +2,7 @@ package com.MarjoPosse.Profielen.api;
 
 import java.util.*;
 
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -90,4 +90,18 @@ public class AdminaccountEndpoint {
 		adminaccountService.delete(adminaccount);
 		return Response.accepted(adminaccount.getId()).build();
 	} 
+	
+	@DELETE //toegevoegd door Cris
+	@Path("{id}")
+	public Response deleteById(@PathParam("id") Long id) {
+		Optional <Adminaccount> optionalToBeDeleted = this.adminaccountService.findById(id);
+
+		if(optionalToBeDeleted.isPresent()) {
+			this.adminaccountService.deleteById(id); 
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+	}
 }

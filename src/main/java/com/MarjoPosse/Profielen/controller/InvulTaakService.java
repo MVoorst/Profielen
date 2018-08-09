@@ -25,6 +25,10 @@ public class InvulTaakService {
 		invultaakRepository.delete(invultaak);
 	}
 	
+	public void deleteById(Long id) { //toegevoegd door Cris
+		invultaakRepository.deleteById(id);
+	}
+	
 	public Iterable <InvulTaak> findAll(){
 		Iterable <InvulTaak> result = invultaakRepository.findAll();
 		return result;
