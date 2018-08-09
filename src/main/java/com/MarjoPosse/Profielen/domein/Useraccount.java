@@ -12,8 +12,72 @@ public class Useraccount {
 private long id;
 private String gebruikersnaam;
 private String wachtwoord;
+private String emailadres;
 
+private String voornaam;
+private String achternaam;
+private boolean geslacht;
+private int geboortedatum;
+private String adres;
+private String postcode;
+private String woonplaats;
+private String linkedinadres;
+private String githubadres;
 
+public String getVoornaam() {
+	return voornaam;
+}
+public void setVoornaam(String voornaam) {
+	this.voornaam = voornaam;
+}
+public String getAchternaam() {
+	return achternaam;
+}
+public void setAchternaam(String achternaam) {
+	this.achternaam = achternaam;
+}
+public boolean isGeslacht() {
+	return geslacht;
+}
+public void setGeslacht(boolean geslacht) {
+	this.geslacht = geslacht;
+}
+public int getGeboortedatum() {
+	return geboortedatum;
+}
+public void setGeboortedatum(int geboortedatum) {
+	this.geboortedatum = geboortedatum;
+}
+public String getAdres() {
+	return adres;
+}
+public void setAdres(String adres) {
+	this.adres = adres;
+}
+public String getPostcode() {
+	return postcode;
+}
+public void setPostcode(String postcode) {
+	this.postcode = postcode;
+}
+public String getWoonplaats() {
+	return woonplaats;
+}
+public void setWoonplaats(String woonplaats) {
+	this.woonplaats = woonplaats;
+}
+public String getLinkedinadres() {
+	return linkedinadres;
+}
+public void setLinkedinadres(String linkedinadres) {
+	this.linkedinadres = linkedinadres;
+}
+public String getGithubadres() {
+	return githubadres;
+}
+public void setGithubadres(String githubadres) {
+	this.githubadres = githubadres;
+}
 
 public long getId() {
 	return id;
@@ -32,5 +96,11 @@ public String getWachtwoord() {
 }
 public void setWachtwoord(String wachtwoord) {
 	this.wachtwoord = wachtwoord;
+}
+public String getEmailadres() {
+	return emailadres;
+}
+public void setEmailadres(String emailadres) {
+	this.emailadres = emailadres;
 }
 }
