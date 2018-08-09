@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.*;
 import com.MarjoPosse.Profielen.controller.*;
+import javax.ws.rs.Consumes;
 
 @Path("adminaccount")
 @Component
