@@ -57,7 +57,47 @@ function nieuweUser() {
 
 	var newParticipant = {};
 		newParticipant.gebruikersnaam = usernameParticipant;
-		//newParticipant.email = mailParticipant;
+		newParticipant.emailadres = mailParticipant;
+	var newParticipantjson = JSON.stringify(newParticipant);
+
+	yhttp.onreadystatechange = function() {
+		console.log(this.readyState) 
+		console.log(this.status);
+		 	if (this.readyState == 4 && this.status == 202) {
+		  	console.log("Ready");
+		    //console.log(this.responseText);
+		    //var GetResponseIn = this.responseText;
+		    //var ResponseIn = JSON.parse(GetResponseIn);
+		    //console.log(ResponseIn);
+		    getpass(mailParticipant, usernameParticipant0);
+		 	}
+	};
+
+	yhttp.open("POST", "http://localhost:8082/api/useraccount", true);
+	yhttp.setRequestHeader ("content-type", "application/json");
+	yhttp.send(newParticipantjson);
+
+}
+
+function nieuweNAW() {
+	console.log(">>>>NAW>>>>");
+	var uservoornameParticipant = (document.getElementById("Voornaam").value);
+	var userachternameParticipant = (document.getElementById("Achternaam").value);
+	var usertussenvoegselParticipant = (document.getElementById("Tussenvoegsel").value);
+	var streetParticipant = (document.getElementById("Straat").value);
+	var huisnummerParticipant = (document.getElementById("Huisnummer").value);
+	var postcodeParticipant = (document.getElementById("Postcode").value);
+	var stadParticipant = (document.getElementById("Woonplaats").value);
+	var yhttp = new XMLHttpRequest();
+
+	var newParticipant = {};
+	newParticipant.voonaam = uservoornameParticipant;
+	newParticipant.achternaam = userachternameParticipant;
+	newParticipant.tussenvoegsel = usertussenvoegselParticipant;
+	newParticipant.adres = streetParticipant;
+	newParticipant.huisnummer = huisnummerParticipant;
+	newParticipant.postcode = postcodeParticipant;
+	newParticipant.woonplaats = stadParticipant;
 	var newParticipantjson = JSON.stringify(newParticipant);
 
 	yhttp.onreadystatechange = function() {
