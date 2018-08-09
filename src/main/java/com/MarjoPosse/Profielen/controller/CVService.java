@@ -25,6 +25,11 @@ public class CVService {
 		cvRepository.delete(cv);
 	}
 	
+	public void deleteById(Long id) { //toegevoegd door Cris
+		cvRepository.deleteById(id);
+	}
+	
+	
 	public Iterable <CV> findAll(){
 		Iterable <CV> result = cvRepository.findAll();
 		return result;
@@ -34,6 +39,4 @@ public class CVService {
 		
 		return cvRepository.existsById(id);
 	}
-
-
 }

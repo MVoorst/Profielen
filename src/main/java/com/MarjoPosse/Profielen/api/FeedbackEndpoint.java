@@ -2,7 +2,7 @@ package com.MarjoPosse.Profielen.api;
 
 import java.util.Optional;
 
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -81,5 +81,19 @@ public class FeedbackEndpoint {
 	public Response deleteInlogpagina(Feedback feedback) {
 		feedbackService.delete(feedback);
 		return Response.accepted(feedback.getId()).build();
+	}
+	
+	@DELETE //toegevoegd door Cris
+	@Path("{id}")
+	public Response deleteById(@PathParam("id") Long id) {
+		Optional <Feedback> optionalToBeDeleted = this.feedbackService.findById(id);
+
+		if(optionalToBeDeleted.isPresent()) {
+			this.feedbackService.deleteById(id); 
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
 	}
 }

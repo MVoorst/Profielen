@@ -1,11 +1,14 @@
 package com.MarjoPosse.Profielen.api;
 
+import java.util.Optional;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -29,13 +32,14 @@ public class VragenEndpoint {
 		Iterable <Vragen> vragen = vragenService.findAll();
 		return Response.ok(vragen).build();
 	}
+	
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response postVragen(Vragen vragen){
 		Vragen result = vragenService.save(vragen);
-		return Response.accepted(result.getVoornaam()).build();	
+		return Response.accepted(result.getVraag1()).build();	
 	}
 	
 	@PUT
@@ -43,13 +47,27 @@ public class VragenEndpoint {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response putVragen(Vragen vragen) {
 		Vragen result = vragenService.save(vragen);
-		return Response.accepted(result.getVoornaam()).build();
+		return Response.accepted(result.getVraag1()).build();
 	}
 	
 	@DELETE
 	@Consumes (MediaType.APPLICATION_JSON)
 	public Response deleteWerkervaring(Vragen vragen) {
 		vragenService.delete(vragen);
-		return Response.accepted(vragen.getVoornaam()).build();
+		return Response.accepted(vragen.getVraag1()).build();
+	}
+	
+	@DELETE //toegevoegd door Cris
+	@Path("{id}")
+	public Response deleteById(@PathParam("id") Long id) {
+		Optional <Vragen> optionalToBeDeleted = this.vragenService.findById(id);
+
+		if(optionalToBeDeleted.isPresent()) {
+			this.vragenService.deleteById(id); 
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
 	}
 }

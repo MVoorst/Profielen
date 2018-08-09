@@ -25,6 +25,12 @@ public class VragenService {
 		vragenRepository.delete(vragen);
 		}
 	
+	public void deleteById(Long id) { //toegevoegd door Cris
+		vragenRepository.deleteById(id);
+	}
+	
+	
+	
 	public Iterable <Vragen> findAll(){
 		Iterable <Vragen> result = vragenRepository.findAll();
 		return result;
