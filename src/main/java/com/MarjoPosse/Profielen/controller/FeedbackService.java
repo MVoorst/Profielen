@@ -25,6 +25,11 @@ public class FeedbackService {
 		feedbackRepository.delete(feedback);
 		}
 	
+	public void deleteById(Long id) { //toegevoegd door Cris
+		feedbackRepository.deleteById(id);
+	}
+	
+	
 	public Iterable <Feedback> findAll(){
 		Iterable <Feedback> result = feedbackRepository.findAll();
 		return result;
