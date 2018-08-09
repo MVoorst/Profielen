@@ -21,33 +21,30 @@ import com.MarjoPosse.Profielen.domein.*;
 import com.MarjoPosse.Profielen.controller.*;
 
 @Path("useraccount")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @Component
 public class UseraccountEndpoint {
 	
 	@Autowired
-	private UseraccountService useraccountService;
+	private UseraccountRepository useraccountService;
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response listGroep(){
-		Iterable <Useraccount> useraccount = useraccountService.findAll();
-		return Response.ok(useraccount).build();
+	public Response list(){
+		return Response.ok(this.useraccountService.findAll()).build();
 	}
 	@GET
 	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getUseraccountById(@PathParam("id")Long id) {
+	public Response findById(@PathParam("id")Long id) {
 		Optional<Useraccount> optionaluseraccount=this.useraccountService.findById(id);
-		if (useraccountService.existsById(id)){
-			Optional<Useraccount> persoon = useraccountService.findById(id);
-			 return Response.ok(persoon).build();
+		if (optionaluseraccount.isPresent()){
+			Useraccount useraccount = optionaluseraccount.get();
+			 return Response.ok(useraccount).build();
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}	
 
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
 	public Response postInlogpagina(Useraccount useraccount){
 		Useraccount result = useraccountService.save(useraccount);
 		return Response.accepted(result.getGebruikersnaam()).build();	
@@ -62,7 +59,7 @@ public class UseraccountEndpoint {
 		Inlogpagina result = inlogpaginaService.save(useraccount);
 		return  Response.accepted(result.getId()).build();
 	}
-	
+	/*
 	@PUT
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -77,7 +74,6 @@ public class UseraccountEndpoint {
 	}*/
 	
 	@DELETE
-	@Consumes (MediaType.APPLICATION_JSON)
 	public Response deleteInlogpagina(Useraccount useraccount) {
 		useraccountService.delete(useraccount);
 		return Response.accepted(useraccount.getGebruikersnaam()).build();
