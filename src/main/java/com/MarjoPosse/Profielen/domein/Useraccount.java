@@ -7,9 +7,14 @@ import javax.persistence.Id;
 
 @Entity
 public class Useraccount {
-@GeneratedValue(strategy = GenerationType.AUTO)
-@Id	
-private long id;
+@Id @GeneratedValue(strategy = GenerationType.AUTO)
+private Long id;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
 private String gebruikersnaam;
 private String wachtwoord;
 private String emailadres;
@@ -23,6 +28,7 @@ private String postcode;
 private String woonplaats;
 private String linkedinadres;
 private String githubadres;
+private String succes;
 
 public String getVoornaam() {
 	return voornaam;
@@ -79,12 +85,7 @@ public void setGithubadres(String githubadres) {
 	this.githubadres = githubadres;
 }
 
-public long getId() {
-	return id;
-}
-public void setId(long id) {
-	this.id = id;
-}
+
 public String getGebruikersnaam() {
 	return gebruikersnaam;
 }
@@ -102,5 +103,11 @@ public String getEmailadres() {
 }
 public void setEmailadres(String emailadres) {
 	this.emailadres = emailadres;
+}
+public String getSucces() {
+	return succes;
+}
+public void setSucces(String succes) {
+	this.succes = succes;
 }
 }

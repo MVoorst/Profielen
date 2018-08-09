@@ -33,6 +33,7 @@ public class UseraccountService {
 	public boolean existsById(Long id) {
 		return false;
 	}
-
-	
+	public Optional <Useraccount> findByGebruiksernaam (String gebruikersnaam) {
+		return useraccountRepository.findByGebruikersnaam(gebruikersnaam);
+	}	
 }
