@@ -78,20 +78,17 @@ public class UseraccountEndpoint {
 			return Response.status(Status.NOT_ACCEPTABLE).build();		
 		}	
 	}
-	/*
+	
 	@PUT
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response Update(@PathParam("id") long id,Useraccount input) {
-	putInlogpagina(Useraccount useraccount) {
-		Optional<Useraccount> optionaluseraccountUpdate=this.useraccountService.findById(id);
-		if(optionaluseraccountUpdate isPresent) {
 		
 		Useraccount result = useraccountService.save(useraccount);
 		return Response.accepted(result.getGebruikersnaam()).build();
 	}
-	*/
+	
 	@DELETE
 	public Response deleteInlogpagina(Useraccount useraccount) {
 		useraccountService.delete(useraccount);

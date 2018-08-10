@@ -6,6 +6,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.api.UseraccountEndpoint;
+import com.MarjoPosse.Profielen.api.VoorbeeldEndpoint;
 import com.MarjoPosse.Profielen.api.AdminaccountEndpoint;
 import com.MarjoPosse.Profielen.api.CVEndpoint;
 import com.MarjoPosse.Profielen.api.FeedbackEndpoint;
@@ -23,5 +24,6 @@ public class JerseyConfig extends ResourceConfig {
 		register(UseraccountEndpoint.class);
 		register(FeedbackEndpoint.class);
 		register(InvulTaakEndpoint.class);
+		register(VoorbeeldEndpoint.class);
 	}
 }
