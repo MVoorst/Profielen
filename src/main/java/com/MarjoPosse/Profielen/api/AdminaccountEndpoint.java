@@ -17,8 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.*;
+import com.MarjoPosse.Profielen.Message.Message;
 import com.MarjoPosse.Profielen.controller.*;
-import javax.ws.rs.Consumes;
 
 @Path("adminaccount")
 @Component
@@ -47,19 +47,25 @@ public class AdminaccountEndpoint {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response postAdminaccount(Adminaccount adminaccount){
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getGebruikersnaam()).build();	
 	}
 	
 	@POST
-	@Path("{Login}")
+	@Path("Login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response checkLogin(Adminaccount admin) {
 		if (admin == null) {
 			return Response.status(Status.NOT_ACCEPTABLE).build();
 		} else {
-			adminaccountService.loginCheck(admin);
+			if (adminaccountService.loginCheck(admin) == true) {
+				return Response.accepted(new Message("Success")).build();
+			} else {
+				return Response.status(Status.NOT_ACCEPTABLE).build();
+			}
 		}
 	}
 	

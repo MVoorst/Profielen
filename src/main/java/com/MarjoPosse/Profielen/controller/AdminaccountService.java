@@ -37,17 +37,17 @@ public class AdminaccountService {
 		return false;
 	}
 	
-	public Response loginCheck(Adminaccount admin) {
-		Optional<Adminaccount> result = findByUserName(admin.getUserName());
+	public boolean loginCheck(Adminaccount admin) {
+		Optional<Adminaccount> result = adminaccountRepository.findByGebruikersnaam(admin.getGebruikersnaam());
 		if (!result.isPresent()) {
-			return Response.status(Status.NOT_FOUND).build();
+			return false;
 		}
 		
 		Adminaccount rightLogin = result.get();
-		if (rightLogin.getPassword().equals(admin.getPassword())) {
-			return Response.accepted(new SuccesMassage("Succes")).build();
+		if (rightLogin.getWachtwoord().equals(admin.getWachtwoord())) {
+			return true;
 		}else {
-			return Response.accepted(Status.NOT_ACCEPTABLE).build();
+			return false;
 		}
 
 	}
