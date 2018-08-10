@@ -41,5 +41,20 @@ public class UseraccountService {
 
 	}
 	
+	public boolean loginCheck(Useraccount user) {
+		Optional<Useraccount> result = useraccountRepository.findByGebruikersnaam(user.getGebruikersnaam());
+		if (!result.isPresent()) {
+			return false;
+		}
+		
+		Useraccount rightLogin = result.get();
+		if (rightLogin.getWachtwoord().equals(user.getWachtwoord())) {
+			return true;
+		}else {
+			return false;
+		}
+
+	}
+	
 }
 
