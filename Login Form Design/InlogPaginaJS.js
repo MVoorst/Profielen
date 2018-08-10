@@ -110,7 +110,7 @@ function nieuweNAW() {
 		    //var GetResponseIn = this.responseText;
 		    //var ResponseIn = JSON.parse(GetResponseIn);
 		    //console.log(ResponseIn);
-		    getpass(mailParticipant, usernameParticipant0);
+		    getPass(mailParticipant, usernameParticipant);
 		 	}
 	};
 
@@ -122,10 +122,12 @@ function nieuweNAW() {
 
 function getPass (mailParticipant, usernameParticipant) {
 	console.log("getPass running..")
+	console.log(usernameParticipant);
 	var zhttp = new XMLHttpRequest();
 
-	xhttp.onreadystatechange = function() {
-		console.log(this.readyState + this.status);
+	zhttp.onreadystatechange = function() {
+		console.log(this.readyState);
+		console.log( this.status);
    		if (this.readyState == 4 && this.status == 200) {
      		console.log("Ready");
      		console.log(this.responseText);
@@ -139,17 +141,21 @@ function getPass (mailParticipant, usernameParticipant) {
 	 		console.log(usernameParticipant);
 	 		console.log(gevondenPersoon.gebruikersnaam);
 	 		if (usernameParticipant == gevondenPersoon.gebruikersnaam ){
+	 			console.log("gelijk")
 	 			var registratiesleutel = gevondenPersoon.wachtwoord;
+	 			window.open('mailto: marjolijn_voorst@live.nl');
+	 		} else{ console.log("niet gelijk")
+
 	 		}
 
-    	}
-	};
+    		}
+		};
 	}
 		zhttp.open("GET", "http://localhost:8082/api/useraccount");
 		zhttp.setRequestHeader ("content-type", "application/json");
 		zhttp.send();	
 
-	window.open('mailto: mailParticipant+?subject = "Registratiesleutel" & body = "Gebruikersnaam  = " + usernameParticipant + "Wachtwoord  = " Registratiesleutel');
+	
 }
 
 //met deze functie stuurt de browser een mail.
