@@ -44,7 +44,7 @@ public class UseraccountEndpoint {
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}	
-	
+
 	@POST
 	public Response create(Useraccount login) {		
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
@@ -57,7 +57,9 @@ public class UseraccountEndpoint {
 		
 		useraccountService.save (login);		
 		return Response.accepted(login).build();
+
 	}
+
 	@POST				
 	@Path("controle")		
 	public Response checkLogin(Useraccount login) {
@@ -94,5 +96,19 @@ public class UseraccountEndpoint {
 	public Response deleteInlogpagina(Useraccount useraccount) {
 		useraccountService.delete(useraccount);
 		return Response.accepted(useraccount.getGebruikersnaam()).build();
+	}
+	
+	@DELETE //toegevoegd door Cris
+	@Path("{id}")
+	public Response deleteById(@PathParam("id") Long id) {
+		Optional <Useraccount> optionalToBeDeleted = this.useraccountService.findById(id);
+
+		if(optionalToBeDeleted.isPresent()) {
+			this.useraccountService.deleteById(id); 
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
 	}
 }

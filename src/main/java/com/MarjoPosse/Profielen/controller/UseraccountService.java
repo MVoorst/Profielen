@@ -25,15 +25,21 @@ public class UseraccountService {
 		useraccountRepository.delete(useraccount);
 		}
 	
+	public void deleteById(Long id) { //toegevoegd door Cris
+		useraccountRepository.deleteById(id);
+	}
+	
 	public Iterable <Useraccount> findAll(){
 		Iterable <Useraccount> result = useraccountRepository.findAll();
 		return result;
 	}
-
-	public boolean existsById(Long id) {
-		return false;
-	}
 	public Optional <Useraccount> findByGebruiksernaam (String gebruikersnaam) {
 		return useraccountRepository.findByGebruikersnaam(gebruikersnaam);
 	}	
+	public boolean existsById(Long id) {
+		return false;
+
+	}
+	
 }
+
