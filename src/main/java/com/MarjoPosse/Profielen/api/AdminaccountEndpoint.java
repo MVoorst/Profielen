@@ -50,8 +50,11 @@ public class AdminaccountEndpoint {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response postAdminaccount(Adminaccount adminaccount){
 		Adminaccount result = adminaccountService.save(adminaccount);
-		return Response.accepted(result.getGebruikersnaam()).build();	
+		return Response.accepted(result.getGebruikersnaam()).build();
 	}
+<<<<<<< HEAD
+
+=======
 	
 	@POST
 	@Path("Login")
@@ -70,6 +73,7 @@ public class AdminaccountEndpoint {
 	}
 	
 	
+>>>>>>> master
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteVrijwilligerswerk(Adminaccount adminaccount) {
