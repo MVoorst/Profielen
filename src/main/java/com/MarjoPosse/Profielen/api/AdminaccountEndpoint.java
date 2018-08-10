@@ -52,22 +52,11 @@ public class AdminaccountEndpoint {
 	}
 	/*
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response addAdmin(Adminaccount adminaccount){
-		if(adminaccount != null) {
-		Adminaccount result = adminaccountService.save(adminaccount);
-		return Response.accepted(result.getId()).build();
-		}
-		System.out.println("persoon toch null");
-		return Response.status(Status.INTERNAL_SERVER_ERROR).build();
-	}
-	@POST
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response updatepersoon(@PathParam("id") Long id,Persoon persoon) {
-		if(persoonService.existsById(id)){
+		if(AdminaccountService.existsById(id)){
 		Persoon result = persoonService.save(persoon);
 		return  Response.accepted(result.getId()).build();
 		}

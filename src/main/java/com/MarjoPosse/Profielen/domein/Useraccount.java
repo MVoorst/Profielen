@@ -20,10 +20,12 @@ private String wachtwoord;
 private String emailadres;
 
 private String voornaam;
+private String tussenvoegsel;
 private String achternaam;
 private boolean geslacht;
 private int geboortedatum;
-private String adres;
+private int huisnummer;
+private String straat;
 private String postcode;
 private String woonplaats;
 private String linkedinadres;
@@ -35,6 +37,12 @@ public String getVoornaam() {
 }
 public void setVoornaam(String voornaam) {
 	this.voornaam = voornaam;
+}
+public String getTussenvoegsel() {
+	return tussenvoegsel;
+}
+public void setTussenvoegsel(String tussenvoegsel) {
+	this.tussenvoegsel = tussenvoegsel;
 }
 public String getAchternaam() {
 	return achternaam;
@@ -54,11 +62,17 @@ public int getGeboortedatum() {
 public void setGeboortedatum(int geboortedatum) {
 	this.geboortedatum = geboortedatum;
 }
-public String getAdres() {
-	return adres;
+public int getHuisnummer() {
+	return huisnummer;
 }
-public void setAdres(String adres) {
-	this.adres = adres;
+public void setHuisnummer(int huisnummer) {
+	this.huisnummer = huisnummer;
+}
+public String getStraat() {
+	return straat;
+}
+public void setStraat(String straat) {
+	this.straat = straat;
 }
 public String getPostcode() {
 	return postcode;
