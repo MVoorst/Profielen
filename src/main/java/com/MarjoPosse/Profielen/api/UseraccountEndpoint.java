@@ -28,7 +28,7 @@ import com.MarjoPosse.Profielen.controller.*;
 public class UseraccountEndpoint {
 	
 	@Autowired
-	private UseraccountRepository useraccountService;
+	private UseraccountService useraccountService;
 
 	@GET
 	public Response list(){
@@ -66,7 +66,7 @@ public class UseraccountEndpoint {
 		if (login==null) {					
 			return Response.status(Status.NOT_ACCEPTABLE).build();
 		}
-		Optional<Useraccount> result = useraccountService.findByGebruikersnaam(login.getGebruikersnaam());	
+		Optional<Useraccount> result = useraccountService.findByGebruiksernaam(login.getGebruikersnaam());	
 		if (!result.isPresent()) {			
 			return Response.status(Status.NOT_FOUND).build();
 		} 
@@ -79,15 +79,15 @@ public class UseraccountEndpoint {
 		}	
 	}
 	
-	@PUT
-	@Path("{id}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response Update(@PathParam("id") long id,Useraccount input) {
+	//@PUT
+	//@Path("{id}")
+	//@Consumes(MediaType.APPLICATION_JSON)
+	//@Produces(MediaType.TEXT_PLAIN)
+	//public Response Update(@PathParam("id") long id,Useraccount input) {
 		
-		Useraccount result = useraccountService.save(useraccount);
-		return Response.accepted(result.getGebruikersnaam()).build();
-	}
+	//	Useraccount result = useraccountService.save(useraccount);
+	//	return Response.accepted(result.getGebruikersnaam()).build();
+	//}
 	
 	@DELETE
 	public Response deleteInlogpagina(Useraccount useraccount) {

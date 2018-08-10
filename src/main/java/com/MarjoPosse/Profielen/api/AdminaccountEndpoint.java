@@ -52,12 +52,13 @@ public class AdminaccountEndpoint {
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getGebruikersnaam()).build();
 	}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> master
+	@POST
+	@Path("maakuser")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response maakUser()
+	
+	
 	
 	@POST
 	@Path("Login")
@@ -72,10 +73,8 @@ public class AdminaccountEndpoint {
 			} else {
 				return Response.status(Status.NOT_ACCEPTABLE).build();
 			}
-		}
-		System.out.println("persoon id bestaat niet");
-	return Response.status(Status.NOT_FOUND).build();	
-	}*/
+		}	
+	}
 
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
