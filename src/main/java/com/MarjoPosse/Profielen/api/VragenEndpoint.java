@@ -36,6 +36,17 @@ public class VragenEndpoint {
 		Iterable <Vragen> vragen = vragenService.findAll();
 		return Response.ok(vragen).build();
 	}
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getVragenById(@PathParam("id")Long id) {
+		Optional<Vragen> optionalvragen=this.vragenService.findById(id);
+		if (vragenService.existsById(id)){
+			Optional<Vragen> vragen = vragenService.findById(id);
+			 return Response.ok(vragen).build();
+			}
+		return Response.status(Status.NOT_FOUND).build();
+		}
 	
 	@GET
 	@Path("{id}")

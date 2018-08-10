@@ -51,6 +51,7 @@ public class AdminaccountEndpoint {
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getGebruikersnaam()).build();	
 	}
+<<<<<<< HEAD
 	
 	/*
 	@POST
@@ -76,14 +77,10 @@ public class AdminaccountEndpoint {
 		System.out.println("persoon id bestaat niet");
 	return Response.status(Status.NOT_FOUND).build();	
 	}*/
+=======
+
+>>>>>>> master
 	
-	/*@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response putPersoonsgegevens(Adminaccount adminaccount) {
-		Adminaccount result1 = adminaccountService.save(adminaccount);
-		return Response.accepted(result1.getId()).build();
-	}*/
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
