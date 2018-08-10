@@ -49,9 +49,9 @@ public class AdminaccountEndpoint {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response postAdminaccount(Adminaccount adminaccount){
 		Adminaccount result = adminaccountService.save(adminaccount);
-		return Response.accepted(result.getGebruikersnaam()).build();	
-	}	
-	
+		return Response.accepted(result.getGebruikersnaam()).build();
+	}
+
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteVrijwilligerswerk(Adminaccount adminaccount) {

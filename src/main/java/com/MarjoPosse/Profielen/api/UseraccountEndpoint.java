@@ -3,13 +3,13 @@ package com.MarjoPosse.Profielen.api;
 import java.util.Optional;
 import java.util.Random;
 
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -45,11 +45,6 @@ public class UseraccountEndpoint {
 		return Response.status(Status.NOT_FOUND).build();
 		}	
 
-	//@POST
-	//public Response postInlogpagina(Useraccount useraccount){
-		//Useraccount result = useraccountService.save(useraccount);
-		//return Response.accepted(result.getGebruikersnaam()).build();	
-	//}
 	@POST
 	public Response create(Useraccount login) {		
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
@@ -62,7 +57,9 @@ public class UseraccountEndpoint {
 		
 		useraccountService.save (login);		
 		return Response.accepted(login).build();
+
 	}
+
 	@POST				
 	@Path("controle")		
 	public Response checkLogin(Useraccount login) {
@@ -81,16 +78,6 @@ public class UseraccountEndpoint {
 			return Response.status(Status.NOT_ACCEPTABLE).build();		
 		}	
 	}
-	
-	/*@POST
-	@Path("{id}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response postInloggegevens(@PathParam("id") Long id,Inlogpagina useraccount) {
-		if(){
-		Inlogpagina result = inlogpaginaService.save(useraccount);
-		return  Response.accepted(result.getId()).build();
-	}
 	/*
 	@PUT
 	@Path("{id}")
@@ -103,8 +90,8 @@ public class UseraccountEndpoint {
 		
 		Useraccount result = useraccountService.save(useraccount);
 		return Response.accepted(result.getGebruikersnaam()).build();
-	}*/
-	
+	}
+	*/
 	@DELETE
 	public Response deleteInlogpagina(Useraccount useraccount) {
 		useraccountService.delete(useraccount);
