@@ -2,7 +2,7 @@ package com.MarjoPosse.Profielen.api;
 
 import java.util.*;
 
-import javax.ws.rs.PathParam;
+import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,8 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.*;
+import com.MarjoPosse.Profielen.Message.Message;
 import com.MarjoPosse.Profielen.controller.*;
-import javax.ws.rs.Consumes;
 
 @Path("adminaccount")
 @Component
@@ -44,32 +44,40 @@ public class AdminaccountEndpoint {
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response postAdminaccount(Adminaccount adminaccount){
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getGebruikersnaam()).build();
 	}
+<<<<<<< HEAD
 
+=======
+	
+	@POST
+	@Path("Login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response checkLogin(Adminaccount admin) {
+		if (admin == null) {
+			return Response.status(Status.NOT_ACCEPTABLE).build();
+		} else {
+			if (adminaccountService.loginCheck(admin) == true) {
+				return Response.accepted(new Message("Success")).build();
+			} else {
+				return Response.status(Status.NOT_ACCEPTABLE).build();
+			}
+		}
+	}
+	
+	
+>>>>>>> master
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteVrijwilligerswerk(Adminaccount adminaccount) {
 		adminaccountService.delete(adminaccount);
 		return Response.accepted(adminaccount.getId()).build();
 	} 
-	
-	@DELETE //toegevoegd door Cris
-	@Path("{id}")
-	public Response deleteById(@PathParam("id") Long id) {
-		Optional <Adminaccount> optionalToBeDeleted = this.adminaccountService.findById(id);
-
-		if(optionalToBeDeleted.isPresent()) {
-			this.adminaccountService.deleteById(id); 
-			return Response.ok().build();
-		}
-		else {
-			return Response.status(Response.Status.NOT_FOUND).build();
-		}
-	}
 }
