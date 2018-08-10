@@ -45,5 +45,8 @@ private Adminaccount persoon;
 	public void setVraag4(String vraag4) {
 		this.vraag4 = vraag4;
 	}
+	public boolean isPresent() {
+		return false;
+	}
 }
 

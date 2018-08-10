@@ -51,7 +51,24 @@ public class AdminaccountEndpoint {
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getGebruikersnaam()).build();	
 	}
+<<<<<<< HEAD
+	
+	/*
+	@POST
+	@Path("{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response updatepersoon(@PathParam("id") Long id,Persoon persoon) {
+		if(AdminaccountService.existsById(id)){
+		Persoon result = persoonService.save(persoon);
+		return  Response.accepted(result.getId()).build();
+		}
+		System.out.println("persoon id bestaat niet");
+	return Response.status(Status.NOT_FOUND).build();	
+	}*/
+=======
 
+>>>>>>> master
 	
 	
 	@DELETE
