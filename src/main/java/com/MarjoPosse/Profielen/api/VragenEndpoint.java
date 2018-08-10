@@ -36,25 +36,14 @@ public class VragenEndpoint {
 		Iterable <Vragen> vragen = vragenService.findAll();
 		return Response.ok(vragen).build();
 	}
-	@GET
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getVragenById(@PathParam("id")Long id) {
-		Optional<Vragen> optionalvragen=this.vragenService.findById(id);
-		if (vragenService.existsById(id)){
-			Optional<Vragen> vragen = vragenService.findById(id);
-			 return Response.ok(vragen).build();
-			}
-		return Response.status(Status.NOT_FOUND).build();
-		}
 	
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getVragenById(@PathParam("id")Long id) {
-		Optional<Vragen> optionalvragen=this.vragenService.findById(id);
+		Vragen optionalvragen=this.vragenService.findById(id);
 		if (vragenService.existsById(id)){
-			Optional<Vragen> invultaak = vragenService.findById(id);
+			Vragen invultaak = vragenService.findById(id);
 			 return Response.ok(invultaak).build();
 			}
 		return Response.status(Status.NOT_FOUND).build();
@@ -86,7 +75,7 @@ public class VragenEndpoint {
 	@DELETE //toegevoegd door Cris
 	@Path("{id}")
 	public Response deleteById(@PathParam("id") Long id) {
-		Optional <Vragen> optionalToBeDeleted = this.vragenService.findById(id);
+		Vragen optionalToBeDeleted = this.vragenService.findById(id);
 
 		if(optionalToBeDeleted.isPresent()) {
 			this.vragenService.deleteById(id); 

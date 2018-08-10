@@ -7,9 +7,14 @@ import javax.persistence.Id;
 
 @Entity
 public class Useraccount {
-@GeneratedValue(strategy = GenerationType.AUTO)
-@Id	
-private long id;
+@Id @GeneratedValue(strategy = GenerationType.AUTO)
+private Long id;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
 private String gebruikersnaam;
 private String wachtwoord;
 private String emailadres;
@@ -19,11 +24,13 @@ private String tussenvoegsel;
 private String achternaam;
 private boolean geslacht;
 private int geboortedatum;
-private String adres;
+private int huisnummer;
+private String straat;
 private String postcode;
 private String woonplaats;
 private String linkedinadres;
 private String githubadres;
+private String succes;
 
 public String getVoornaam() {
 	return voornaam;
@@ -55,11 +62,17 @@ public int getGeboortedatum() {
 public void setGeboortedatum(int geboortedatum) {
 	this.geboortedatum = geboortedatum;
 }
-public String getAdres() {
-	return adres;
+public int getHuisnummer() {
+	return huisnummer;
 }
-public void setAdres(String adres) {
-	this.adres = adres;
+public void setHuisnummer(int huisnummer) {
+	this.huisnummer = huisnummer;
+}
+public String getStraat() {
+	return straat;
+}
+public void setStraat(String straat) {
+	this.straat = straat;
 }
 public String getPostcode() {
 	return postcode;
@@ -86,12 +99,7 @@ public void setGithubadres(String githubadres) {
 	this.githubadres = githubadres;
 }
 
-public long getId() {
-	return id;
-}
-public void setId(long id) {
-	this.id = id;
-}
+
 public String getGebruikersnaam() {
 	return gebruikersnaam;
 }
@@ -109,5 +117,11 @@ public String getEmailadres() {
 }
 public void setEmailadres(String emailadres) {
 	this.emailadres = emailadres;
+}
+public String getSucces() {
+	return succes;
+}
+public void setSucces(String succes) {
+	this.succes = succes;
 }
 }

@@ -2,6 +2,9 @@ package com.MarjoPosse.Profielen.controller;
 
 import java.util.Optional;
 
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,12 +37,20 @@ public class AdminaccountService {
 		return false;
 	}
 	
-	public void logincheck(Adminaccount admin) {
+	public Response loginCheck(Adminaccount admin) {
 		Optional<Adminaccount> result = findByUserName(admin.getUserName());
+		if (!result.isPresent()) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
 		
-	}
+		Adminaccount rightLogin = result.get();
+		if (rightLogin.getPassword().equals(admin.getPassword())) {
+			return Response.accepted(new SuccesMassage("Succes")).build();
+		}else {
+			return Response.accepted(Status.NOT_ACCEPTABLE).build();
+		}
 
-	
+	}
 
 
 }

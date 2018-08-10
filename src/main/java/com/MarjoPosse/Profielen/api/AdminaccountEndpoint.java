@@ -54,12 +54,12 @@ public class AdminaccountEndpoint {
 	}
 	
 	@POST
-	@Path("Login")
+	@Path("{Login}")
 	public Response checkLogin(Adminaccount admin) {
 		if (admin == null) {
 			return Response.status(Status.NOT_ACCEPTABLE).build();
 		} else {
-			AdminaccountService.logincheck(admin);
+			adminaccountService.loginCheck(admin);
 		}
 	}
 	
