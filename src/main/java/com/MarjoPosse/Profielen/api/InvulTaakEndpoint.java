@@ -54,6 +54,15 @@ public class InvulTaakEndpoint {
 		return Response.accepted(result.getId()).build();	
 	}
 	
+	@POST
+	@Path("invul")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response postinvullen(InvulTaak invul) {
+		
+		return Response.ok(invultaak);
+	}
+	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)

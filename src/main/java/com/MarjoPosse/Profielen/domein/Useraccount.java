@@ -9,10 +9,10 @@ import javax.persistence.Id;
 public class Useraccount {
 @Id @GeneratedValue(strategy = GenerationType.AUTO)
 private Long id;
-public long getId() {
+public Long getId() {
 	return id;
 }
-public void setId(long id) {
+public void setId(Long id) {
 	this.id = id;
 }
 private String gebruikersnaam;
