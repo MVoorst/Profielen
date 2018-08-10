@@ -69,13 +69,14 @@ function nieuweUser() {
 		    //var GetResponseIn = this.responseText;
 		    //var ResponseIn = JSON.parse(GetResponseIn);
 		    //console.log(ResponseIn);
-		    getpass(mailParticipant, usernameParticipant0);
+		    //getpass(mailParticipant, usernameParticipant0);
 		 	}
 	};
 
 	yhttp.open("POST", "http://localhost:8082/api/useraccount", true);
 	yhttp.setRequestHeader ("content-type", "application/json");
 	yhttp.send(newParticipantjson);
+	sendUserCreatedMail(nieuweUser);
 
 }
 
@@ -151,5 +152,32 @@ function getPass (mailParticipant, usernameParticipant) {
 	window.open('mailto: mailParticipant+?subject = "Registratiesleutel" & body = "Gebruikersnaam  = " + usernameParticipant + "Wachtwoord  = " Registratiesleutel');
 }
 
+//met deze functie stuurt de browser een mail.
+function sendUserCreatedMail(){
+			var nodemailer = require('nodemailer');
+
+		var transporter = nodemailer.createTransport({
+		  service: 'gmail',
+		  auth: {
+			user: 'testwerktmailennaarcrispijn@gmail.com',
+			pass: 'qien18Kobalt11'
+		  }
+		});
+
+		var mailOptions = {
+		  from: 'testwerktmailennaarcrispijn@gmail.com',
+		  to: 'crispijn.sleeboom@gmail.com, marjolijn_voorst@live.nl, Tes@vdvlist.net, ' 
+		  subject: 'testmailtje jongens',
+		  text: 'Hallo allemaal, dit is even een test of mailen lukt via een knop op de browser'
+		};
+
+		transporter.sendMail(mailOptions, function(error, info){
+		  if (error) {
+			console.log(error);
+		  } else {
+			console.log('Email sent: ' + info.response);
+		  }
+		});
+}
 			
 
