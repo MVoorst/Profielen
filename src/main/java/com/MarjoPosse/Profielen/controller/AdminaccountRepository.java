@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.Adminaccount;
-import com.MarjoPosse.Profielen.domein.Useraccount;
 
 
 @Component

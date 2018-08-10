@@ -9,8 +9,7 @@ import com.MarjoPosse.Profielen.domein.Useraccount;
 
 @Component
 public interface UseraccountRepository extends CrudRepository<Useraccount, Long>{
+	Optional<Useraccount> findByWachtwoord(String gebruikersnaam);
 
-	Optional<Useraccount> findByGebruikersnaam(String gebruikersnaam);
-	
 	}
 
