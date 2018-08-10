@@ -2,7 +2,7 @@ package com.MarjoPosse.Profielen.api;
 
 import java.util.*;
 
-import javax.ws.rs.PathParam;
+import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -44,6 +44,7 @@ public class AdminaccountEndpoint {
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
@@ -51,35 +52,16 @@ public class AdminaccountEndpoint {
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getGebruikersnaam()).build();	
 	}
-<<<<<<< HEAD
 	
-	/*
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response addAdmin(Adminaccount adminaccount){
-		if(adminaccount != null) {
-		Adminaccount result = adminaccountService.save(adminaccount);
-		return Response.accepted(result.getId()).build();
+	@Path("Login")
+	public Response checkLogin(Adminaccount admin) {
+		if (admin == null) {
+			return Response.status(Status.NOT_ACCEPTABLE).build();
+		} else {
+			AdminaccountService.logincheck(admin);
 		}
-		System.out.println("persoon toch null");
-		return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 	}
-	@POST
-	@Path("{id}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response updatepersoon(@PathParam("id") Long id,Persoon persoon) {
-		if(persoonService.existsById(id)){
-		Persoon result = persoonService.save(persoon);
-		return  Response.accepted(result.getId()).build();
-		}
-		System.out.println("persoon id bestaat niet");
-	return Response.status(Status.NOT_FOUND).build();	
-	}*/
-=======
-
->>>>>>> master
 	
 	
 	@DELETE
@@ -88,18 +70,4 @@ public class AdminaccountEndpoint {
 		adminaccountService.delete(adminaccount);
 		return Response.accepted(adminaccount.getId()).build();
 	} 
-	
-	@DELETE //toegevoegd door Cris
-	@Path("{id}")
-	public Response deleteById(@PathParam("id") Long id) {
-		Optional <Adminaccount> optionalToBeDeleted = this.adminaccountService.findById(id);
-
-		if(optionalToBeDeleted.isPresent()) {
-			this.adminaccountService.deleteById(id); 
-			return Response.ok().build();
-		}
-		else {
-			return Response.status(Response.Status.NOT_FOUND).build();
-		}
-	}
 }
