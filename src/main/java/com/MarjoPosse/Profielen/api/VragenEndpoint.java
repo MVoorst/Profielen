@@ -20,6 +20,9 @@ import org.springframework.stereotype.Component;
 import com.MarjoPosse.Profielen.domein.*;
 import com.MarjoPosse.Profielen.controller.*;
 
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.TEXT_PLAIN)
+
 @Path("vragen")
 @Component
 public class VragenEndpoint {
@@ -45,7 +48,18 @@ public class VragenEndpoint {
 		return Response.status(Status.NOT_FOUND).build();
 		}
 	
-
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getVragenById(@PathParam("id")Long id) {
+		Optional<Vragen> optionalvragen=this.vragenService.findById(id);
+		if (vragenService.existsById(id)){
+			Optional<Vragen> invultaak = vragenService.findById(id);
+			 return Response.ok(invultaak).build();
+			}
+		return Response.status(Status.NOT_FOUND).build();
+		}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
