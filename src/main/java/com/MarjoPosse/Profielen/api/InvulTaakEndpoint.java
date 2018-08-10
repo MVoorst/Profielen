@@ -44,6 +44,7 @@ public class InvulTaakEndpoint {
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)

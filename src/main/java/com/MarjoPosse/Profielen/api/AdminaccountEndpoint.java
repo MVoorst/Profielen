@@ -51,6 +51,7 @@ public class AdminaccountEndpoint {
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getGebruikersnaam()).build();	
 	}
+	
 	/*
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

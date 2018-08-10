@@ -34,10 +34,7 @@ public class InvulTaakService {
 		return result;
 	}
 	
-	public boolean existsById(Long id) {
-		
+	public boolean existsById(Long id) {	
 		return invultaakRepository.existsById(id);
 	}
-
-
 }
