@@ -11,5 +11,6 @@ import com.MarjoPosse.Profielen.domein.Useraccount;
 public interface UseraccountRepository extends CrudRepository<Useraccount, Long>{
 
 	Optional<Useraccount> findByGebruikersnaam(String gebruikersnaam);
+	Optional<Useraccount> findByWachtwoord(String gebruikersnaam);
 	}
 

@@ -1,53 +1,70 @@
-function Inloggen() {
+function InloggenAdmin() {
+	console.log ("Inloggen..")
+	var inlogAdmin = (document.getElementById("Username").value);
+	var inlogPass = (document.getElementById("Password").value);
+	var xhttp = new XMLHttpRequest();
+
+	var admin = {};
+		admin.gebruikersnaam = inlogAdmin;
+		admin.wachtwoord = inlogPass;
+	var adminJSON = JSON.stringify(admin);
+	console.log (admin);
+
+	xhttp.onreadystatechange = function() {
+		console.log(this.readyState) 
+		console.log(this.status);
+	 	  	if (this.readyState == 4 && this.status == 202) {
+		  	   	console.log("Ready");
+		  	   	var responseObject = JSON.parse(this.responseText)
+		     	console.log(responseObject);
+		     	if (responseObject.message == "Success") {
+		     		console.log("Gevonden");
+		     		document.location.href="AdminDashboard.html";
+		     	} else {
+		     		console.log ("wachtwoord fout");
+		     	}
+		     }else if (this.status == 406) {
+		     	console.log("Niet gevonden");
+		     }   
+	};
+	xhttp.open("POST", "http://localhost:8082/api/adminaccount/Login", true);
+	xhttp.setRequestHeader ("content-type", "application/json");
+	xhttp.send(adminJSON);
+}
+
+function InloggenUser() {
 	console.log ("Inloggen..")
 	var inlogUser = (document.getElementById("Username").value);
 	var inlogPass = (document.getElementById("Password").value);
 	var xhttp = new XMLHttpRequest();
 
-	//var persoon = {};
-	//var persoonJSON = JSON.stringify(persoon);
-	//console.log (persoon);
+	var user = {};
+		user.gebruikersnaam = inlogUser;
+		user.wachtwoord = inlogPass;
+	var userJSON = JSON.stringify(user);
+	console.log (user);
 
 	xhttp.onreadystatechange = function() {
 		console.log(this.readyState) 
 		console.log(this.status);
-	 	  	if (this.readyState == 4 && this.status == 200) {
-	  	   	console.log("Ready");
-	     	console.log(this.responseText);
-	     	var GetResponseIn = this.responseText;
-	     	var inlogPersonenGetIn = JSON.parse(GetResponseIn);
-	     	console.log(inlogPersonenGetIn);
-	     	inloggenCheck(inlogPersonenGetIn, inlogPass, inlogUser);
-     	
- 	   }
+	 	  	if (this.readyState == 4 && this.status == 202) {
+		  	   	console.log("Ready");
+		  	   	var responseObject = JSON.parse(this.responseText)
+		     	console.log(responseObject);
+		     	if (responseObject.message == "Success") {
+		     		console.log("Gevonden");
+		     	} else {
+		     		console.log ("wachtwoord fout");
+		     	}
+		     }else if (this.status == 406) {
+		     	console.log("Niet gevonden");
+		     }   
 	};
-	xhttp.open("GET", "http://localhost:8082/api/adminaccount", true);
+	xhttp.open("POST", "http://localhost:8082/api/useraccount/Login", true);
 	xhttp.setRequestHeader ("content-type", "application/json");
-	xhttp.send();
+	xhttp.send(userJSON);
 }
 
-function inloggenCheck(inlogPersonenGetIn, inlogPass, inlogUser){
-	console.log('Zoeken..')
-	for (var index = 0; index < inlogPersonenGetIn.length; index++) {
-	 	var gevondenPersoon = inlogPersonenGetIn[index];
-	 	console.log(inlogUser);
-	 	console.log(inlogPass);
-	 	console.log(gevondenPersoon.gebruikersnaam);
-		if (inlogUser == gevondenPersoon.gebruikersnaam ){
-			console.log("Gevonden")
-			if(inlogPass == gevondenPersoon.wachtwoord){
-				console.log("Wachtwoord klopt!")
-				document.location.href="AdminDashboard.html"
-			} else {
-				console.log ("wachtwoord fout");
-
-			}
-		} else {
-		console.log("niet gevonden")
-		//throw exception
-		}
-	}
-}
 
 function nieuweUser() {
 	console.log(">>>>>>>>");
@@ -110,7 +127,7 @@ function nieuweNAW() {
 		    //var GetResponseIn = this.responseText;
 		    //var ResponseIn = JSON.parse(GetResponseIn);
 		    //console.log(ResponseIn);
-		    getpass(mailParticipant, usernameParticipant0);
+		    getPass(mailParticipant, usernameParticipant);
 		 	}
 	};
 
@@ -122,10 +139,12 @@ function nieuweNAW() {
 
 function getPass (mailParticipant, usernameParticipant) {
 	console.log("getPass running..")
+	console.log(usernameParticipant);
 	var zhttp = new XMLHttpRequest();
 
-	xhttp.onreadystatechange = function() {
-		console.log(this.readyState + this.status);
+	zhttp.onreadystatechange = function() {
+		console.log(this.readyState);
+		console.log( this.status);
    		if (this.readyState == 4 && this.status == 200) {
      		console.log("Ready");
      		console.log(this.responseText);
@@ -139,46 +158,50 @@ function getPass (mailParticipant, usernameParticipant) {
 	 		console.log(usernameParticipant);
 	 		console.log(gevondenPersoon.gebruikersnaam);
 	 		if (usernameParticipant == gevondenPersoon.gebruikersnaam ){
+	 			console.log("gelijk")
 	 			var registratiesleutel = gevondenPersoon.wachtwoord;
+	 			window.open('mailto: marjolijn_voorst@live.nl');
+	 		} else{ console.log("niet gelijk")
+
 	 		}
 
-    	}
-	};
+    		}
+		};
 	}
 		zhttp.open("GET", "http://localhost:8082/api/useraccount");
 		zhttp.setRequestHeader ("content-type", "application/json");
 		zhttp.send();	
 
-	window.open('mailto: mailParticipant+?subject = "Registratiesleutel" & body = "Gebruikersnaam  = " + usernameParticipant + "Wachtwoord  = " Registratiesleutel');
+	
 }
 
 //met deze functie stuurt de browser een mail.
-function sendUserCreatedMail(){
-			var nodemailer = require('nodemailer');
+// function sendUserCreatedMail(){
+// 			var nodemailer = require('nodemailer');
 
-		var transporter = nodemailer.createTransport({
-		  service: 'gmail',
-		  auth: {
-			user: 'testwerktmailennaarcrispijn@gmail.com',
-			pass: 'qien18Kobalt11'
-		  }
-		});
+// 		var transporter = nodemailer.createTransport({
+// 		  service: 'gmail',
+// 		  auth: {
+// 			user: 'testwerktmailennaarcrispijn@gmail.com',
+// 			pass: 'qien18Kobalt11'
+// 		  }
+// 		});
 
-		var mailOptions = {
-		  from: 'testwerktmailennaarcrispijn@gmail.com',
-		  to: 'crispijn.sleeboom@gmail.com, marjolijn_voorst@live.nl, Tes@vdvlist.net, ' 
-		  subject: 'testmailtje jongens',
-		  text: 'Hallo allemaal, dit is even een test of mailen lukt via een knop op de browser'
-		};
+// 		var mailOptions = {
+// 		  from: 'testwerktmailennaarcrispijn@gmail.com',
+// 		  to: 'crispijn.sleeboom@gmail.com, marjolijn_voorst@live.nl, Tes@vdvlist.net, ' 
+// 		  subject: 'testmailtje jongens',
+// 		  text: 'Hallo allemaal, dit is even een test of mailen lukt via een knop op de browser'
+// 		};
 
-		transporter.sendMail(mailOptions, function(error, info){
-		  if (error) {
-			console.log(error);
-		  } else {
-			console.log('Email sent: ' + info.response);
-		  }
-		});
-}
+// 		transporter.sendMail(mailOptions, function(error, info){
+// 		  if (error) {
+// 			console.log(error);
+// 		  } else {
+// 			console.log('Email sent: ' + info.response);
+// 		  }
+// 		});
+// }
 			
 function send() {
   setTimeout(function() {
