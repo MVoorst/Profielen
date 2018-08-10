@@ -99,24 +99,16 @@ function nieuweUser() {
 
 function nieuweNAW() {
 	console.log(">>>>NAW>>>>");
-	var uservoornameParticipant = (document.getElementById("Voornaam").value);
-	var userachternameParticipant = (document.getElementById("Achternaam").value);
-	var usertussenvoegselParticipant = (document.getElementById("Tussenvoegsel").value);
-	var streetParticipant = (document.getElementById("Straat").value);
-	var huisnummerParticipant = (document.getElementById("Huisnummer").value);
-	var postcodeParticipant = (document.getElementById("Postcode").value);
-	var stadParticipant = (document.getElementById("Woonplaats").value);
-	var yhttp = new XMLHttpRequest();
-
 	var newParticipant = {};
-	newParticipant.voonaam = uservoornameParticipant;
-	newParticipant.achternaam = userachternameParticipant;
-	newParticipant.tussenvoegsel = usertussenvoegselParticipant;
-	newParticipant.adres = streetParticipant;
-	newParticipant.huisnummer = huisnummerParticipant;
-	newParticipant.postcode = postcodeParticipant;
-	newParticipant.woonplaats = stadParticipant;
+	newParticipant.voornaam = (document.getElementById("Voornaam").value);
+	newParticipant.achternaam = (document.getElementById("Achternaam").value);
+	newParticipant.tussenvoegsel = (document.getElementById("Tussenvoegsel").value);
+	newParticipant.adres = (document.getElementById("Straat").value);
+	newParticipant.huisnummer = (document.getElementById("Huisnummer").value);
+	newParticipant.postcode  = (document.getElementById("Postcode").value);
+	newParticipant.woonplaats  = (document.getElementById("Woonplaats").value);
 	var newParticipantjson = JSON.stringify(newParticipant);
+	var yhttp = new XMLHttpRequest();
 
 	yhttp.onreadystatechange = function() {
 		console.log(this.readyState) 
@@ -131,7 +123,7 @@ function nieuweNAW() {
 		 	}
 	};
 
-	yhttp.open("POST", "http://localhost:8082/api/useraccount", true);
+	yhttp.open("PUT", "http://localhost:8082/api/useraccount", true);
 	yhttp.setRequestHeader ("content-type", "application/json");
 	yhttp.send(newParticipantjson);
 
