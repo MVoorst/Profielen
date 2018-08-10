@@ -56,9 +56,14 @@ public class AdminaccountEndpoint {
 	@Path("maakuser")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response maakUser()
-	
-	
+	public Response maakUser(int aantal) {
+		if(aantal == 0) {
+			return Response.status(Status.NOT_ACCEPTABLE).build();
+		} else{
+				adminaccountService.maakUser(aantal);
+				return Response.accepted(new Message("Success")).build();
+			}
+		}
 	
 	@POST
 	@Path("Login")

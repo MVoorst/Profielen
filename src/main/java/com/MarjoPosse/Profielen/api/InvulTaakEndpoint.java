@@ -53,7 +53,7 @@ public class InvulTaakEndpoint {
 		InvulTaak result = invultaakService.save(invultaak);
 		return Response.accepted(result.getId()).build();	
 	}
-	
+	/*
 	@POST
 	@Path("invul")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -62,7 +62,7 @@ public class InvulTaakEndpoint {
 		
 		return Response.ok(invultaak);
 	}
-	
+	*/
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
