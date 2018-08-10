@@ -1,6 +1,6 @@
 package com.MarjoPosse.Profielen.api;
 
-import java.util.Optional;
+import java.util.*;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -20,31 +20,29 @@ import org.springframework.stereotype.Component;
 import com.MarjoPosse.Profielen.domein.*;
 import com.MarjoPosse.Profielen.controller.*;
 
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.TEXT_PLAIN)
-
-@Path("vragen")
+@Path("voorbeeld")
 @Component
-public class VragenEndpoint {
+
+public class VoorbeeldEndpoint {
 	
 	@Autowired
-	private VragenService vragenService;
-
+	private VoorbeeldenService voorbeeldenService;
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listGroep(){
-		Iterable <Vragen> vragen = vragenService.findAll();
-		return Response.ok(vragen).build();
+		Iterable <Voorbeelden> voorbeeld = voorbeeldenService.findAll();
+		return Response.ok(voorbeeld).build();
 	}
 	
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getVragenById(@PathParam("id")Long id) {
-		Optional<Vragen> optionalvragen=this.vragenService.findById(id);
-		if (vragenService.existsById(id)){
-			Optional<Vragen> vragen = vragenService.findById(id);
-			 return Response.ok(vragen).build();
+	public Response getVoorbeeldById(@PathParam("id")Long id) {
+		Optional<Voorbeelden> optionalvoorbeeld=this.voorbeeldenService.findById(id);
+		if (voorbeeldenService.existsById(id)){
+			Optional<Voorbeelden> voorbeelden = voorbeeldenService.findById(id);
+			 return Response.ok(voorbeelden).build();
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}
@@ -52,33 +50,35 @@ public class VragenEndpoint {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response postVragen(Vragen vragen){
-		Vragen result = vragenService.save(vragen);
-		return Response.accepted(result.getVraag1()).build();	
+	public Response postInvulTaak(Voorbeelden voorbeeld){
+		
+		Voorbeelden result = voorbeeldenService.save(voorbeeld);
+		return Response.accepted(result.getId()).build();	
 	}
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response putVragen(Vragen vragen) {
-		Vragen result = vragenService.save(vragen);
-		return Response.accepted(result.getVraag1()).build();
+	public Response putvoorbeeld(Voorbeelden voorbeeld) {
+		Voorbeelden result1 = voorbeeldenService.save(voorbeeld);
+		return Response.accepted(result1.getId()).build();
 	}
 	
 	@DELETE
-	@Consumes (MediaType.APPLICATION_JSON)
-	public Response delete(Vragen vragen) {
-		vragenService.delete(vragen);
-		return Response.accepted(vragen.getVraag1()).build();
-	}
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response delete(Voorbeelden voorbeeld) {
+		voorbeeldenService.delete(voorbeeld);
+		return Response.accepted(voorbeeld.getId()).build();
+	} 
 	
 	@DELETE //toegevoegd door Cris
 	@Path("{id}")
 	public Response deleteById(@PathParam("id") Long id) {
-		Optional<Vragen> optionalToBeDeleted = this.vragenService.findById(id);
+		Optional <Voorbeelden> optionalToBeDeleted = this.voorbeeldenService.findById(id);
 
 		if(optionalToBeDeleted.isPresent()) {
-			this.vragenService.deleteById(id); 
+			this.voorbeeldenService.deleteById(id); 
 			return Response.ok().build();
 		}
 		else {

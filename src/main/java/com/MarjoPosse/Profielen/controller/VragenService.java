@@ -18,8 +18,8 @@ public class VragenService {
 		return vragenRepository.save(vragen);
 	}
 
-	public Vragen findById(Long id) {
-		return vragenRepository.findById(id).orElse(null);
+	public Optional<Vragen> findById(Long id) {
+		return vragenRepository.findById(id);
 	}
 
 	
@@ -30,14 +30,14 @@ public class VragenService {
 	public void deleteById(Long id) { //toegevoegd door Cris
 		vragenRepository.deleteById(id);
 	}
-
+		
 	public Iterable <Vragen> findAll(){
 		Iterable <Vragen> result = vragenRepository.findAll();
 		return result;
-	}			
-
+	}
+	
 	public boolean existsById(Long id) {
-
+		
 		return vragenRepository.existsById(id);
 	}
 }
