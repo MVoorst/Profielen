@@ -129,3 +129,45 @@ button:focus {
   transform: scale(0);
   transform: rotate(360deg);
 }
+
+.myButton{
+    background: () no-repeat;
+    cursor:pointer;
+    border:none;
+    width:30%;
+    height:30%;
+	    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-120%,-0%);
+    box-sizing: border-box;
+    padding: 10% 70px;
+}
+
+.myButton:active  /* use Dot here */
+{   
+  outline: none;
+  transform: scale(0);
+  transform: rotate(360deg);
+}
+
+.myButton2{
+    background: () no-repeat;
+    cursor:pointer;
+    border:none;
+    width:30%;
+    height:30%;
+	    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(40%,-0%);
+    box-sizing: border-box;
+    padding: 10% 70px;
+}
+
+.myButton2:active  /* use Dot here */
+{   
+  outline: none;
+  transform: scale(0);
+  transform: rotate(360deg);
+}
