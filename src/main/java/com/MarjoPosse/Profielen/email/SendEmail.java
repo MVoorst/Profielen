@@ -8,9 +8,9 @@ import javax.mail.internet.MimeMessage;
 
 
 public class SendEmail {
-	public static void main(String[] args) {
+	public void sendEmail(String to, String subject, String emailbody) throws MessagingException{
 	      // Recipient's email ID needs to be mentioned.
-	      String to = "tesvdvlist@gmail.com";
+		  //String to = "tesvdvlist@gmail.com"
 
 	      // Sender's email ID needs to be mentioned
 	      String from = "p.vanhout83@gmail.com";
@@ -46,17 +46,16 @@ public class SendEmail {
 	               InternetAddress.parse(to));
 		
 		   // Set Subject: header field
-		   message.setSubject("Testing Subject");
+		   message.setSubject(subject);
 		
 		   // Now set the actual message
-		   message.setText("Hello, this is sample for to check send " +
-			"email using JavaMailAPI ");
+		   message.setText(emailbody);
 
 		   // Send message
-		   Transport.send(message);
-
-		   System.out.println("Sent message successfully....");
-
+			   Transport.send(message);
+			   
+			   System.out.println("Sent message successfully....");
+		   
 	      } catch (MessagingException e) {
 	         throw new RuntimeException(e);
 	      }
