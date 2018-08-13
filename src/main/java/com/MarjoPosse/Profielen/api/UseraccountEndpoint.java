@@ -77,6 +77,16 @@ public class UseraccountEndpoint {
 		}
 	}
 	
+	@PUT	//by Marjolijn :)
+	@Path("naw")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response putVragen(Useraccount user) {
+		Useraccount result = useraccountService.save(user);
+		return Response.accepted(result.getId()).build();
+	}
+	
+
 	
 	@DELETE
 	public Response deleteInlogpagina(Useraccount useraccount) {

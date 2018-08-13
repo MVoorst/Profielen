@@ -9,7 +9,8 @@ import javax.persistence.Id;
 public class Useraccount {
 @Id @GeneratedValue(strategy = GenerationType.AUTO)
 private Long id;
-public Long getId() {
+
+public long getId() {
 	return id;
 }
 public void setId(Long id) {
@@ -97,6 +98,7 @@ public String getGithubadres() {
 public void setGithubadres(String githubadres) {
 	this.githubadres = githubadres;
 }
+
 public String getGebruikersnaam() {
 	return gebruikersnaam;
 }

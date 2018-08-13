@@ -52,18 +52,6 @@ public class AdminaccountEndpoint {
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getGebruikersnaam()).build();
 	}
-	@POST
-	@Path("maakuser")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response maakUser(Adminaccount user) {
-		if(user == null) {
-			return Response.status(Status.NOT_ACCEPTABLE).build();
-		} else{
-				adminaccountService.maakUser();
-				return Response.accepted(new Message("Success")).build();
-			}
-		}
 	
 	@POST
 	@Path("Login")
