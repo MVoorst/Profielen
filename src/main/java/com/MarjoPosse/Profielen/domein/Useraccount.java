@@ -30,7 +30,6 @@ private String postcode;
 private String woonplaats;
 private String linkedinadres;
 private String githubadres;
-private String succes;
 
 public String getVoornaam() {
 	return voornaam;
@@ -98,8 +97,6 @@ public String getGithubadres() {
 public void setGithubadres(String githubadres) {
 	this.githubadres = githubadres;
 }
-
-
 public String getGebruikersnaam() {
 	return gebruikersnaam;
 }
@@ -117,11 +114,5 @@ public String getEmailadres() {
 }
 public void setEmailadres(String emailadres) {
 	this.emailadres = emailadres;
-}
-public String getSucces() {
-	return succes;
-}
-public void setSucces(String succes) {
-	this.succes = succes;
 }
 }

@@ -52,12 +52,11 @@ public class AdminaccountService {
 		}
 	}
 
-	public boolean maakUser(int aantal) {
+	public boolean maakUser() {
 		UseraccountEndpoint useraccountEndpoint = new UseraccountEndpoint();
-		for(int i = 0 ; i<aantal ; i++) {
-		useraccountEndpoint.create(user);
-		}
-		return false;
+		useraccountEndpoint.create(null);
+		//}
+		return true;
 	}
 
 
