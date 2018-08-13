@@ -52,9 +52,6 @@ public class AdminaccountEndpoint {
 		Adminaccount result = adminaccountService.save(adminaccount);
 		return Response.accepted(result.getGebruikersnaam()).build();
 	}
-<<<<<<< HEAD
-
-=======
 	
 	@POST
 	@Path("Login")
@@ -72,7 +69,10 @@ public class AdminaccountEndpoint {
 		}
 	}
 	
+<<<<<<< HEAD
 	
+=======
+
 >>>>>>> master
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)

@@ -11,7 +11,8 @@ import com.MarjoPosse.Profielen.api.AdminaccountEndpoint;
 import com.MarjoPosse.Profielen.api.CVEndpoint;
 import com.MarjoPosse.Profielen.api.FeedbackEndpoint;
 import com.MarjoPosse.Profielen.api.InvulTaakEndpoint;
-import com.MarjoPosse.Profielen.api.VragenEndpoint;
+import com.MarjoPosse.Profielen.api.VragenlijstEndpoint;
+import com.MarjoPosse.Profielen.api.VraagEndpoint;
 
 
 @Component
@@ -19,11 +20,12 @@ import com.MarjoPosse.Profielen.api.VragenEndpoint;
 public class JerseyConfig extends ResourceConfig {
 	public JerseyConfig(){
 		register(CVEndpoint.class);
-		register(VragenEndpoint.class);
+		register(VragenlijstEndpoint.class);
 		register(AdminaccountEndpoint.class);
 		register(UseraccountEndpoint.class);
 		register(FeedbackEndpoint.class);
 		register(InvulTaakEndpoint.class);
 		register(VoorbeeldEndpoint.class);
+		register(VraagEndpoint.class);
 	}
 }

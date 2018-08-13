@@ -23,28 +23,28 @@ import com.MarjoPosse.Profielen.controller.*;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.TEXT_PLAIN)
 
-@Path("vragen")
+@Path("vraag")
 @Component
-public class VragenEndpoint {
+public class VraagEndpoint {
 	
 	@Autowired
-	private VragenService vragenService;
+	private VraagService vraagService;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listGroep(){
-		Iterable <Vragen> vragen = vragenService.findAll();
-		return Response.ok(vragen).build();
+		Iterable <Vraag> vraag = vraagService.findAll();
+		return Response.ok(vraag).build();
 	}
 	
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getVragenById(@PathParam("id")Long id) {
-		Optional<Vragen> optionalvragen=this.vragenService.findById(id);
-		if (vragenService.existsById(id)){
-			Optional<Vragen> vragen = vragenService.findById(id);
-			 return Response.ok(vragen).build();
+		Optional<Vraag> optionalvragen=this.vraagService.findById(id);
+		if (vraagService.existsById(id)){
+			Optional<Vraag> vraag = vraagService.findById(id);
+			 return Response.ok(vraag).build();
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}
@@ -52,33 +52,33 @@ public class VragenEndpoint {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response postVragen(Vragen vragen){
-		Vragen result = vragenService.save(vragen);
-		return Response.accepted(result.getVraag1()).build();	
+	public Response postVragen(Vraag vraag){
+		Vraag result = vraagService.save(vraag);
+		return Response.ok(vraag).build();	
 	}
-	
+
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response putVragen(Vragen vragen) {
-		Vragen result = vragenService.save(vragen);
-		return Response.accepted(result.getVraag1()).build();
+	public Response putVragen(Vraag vraag) {
+		Vraag result = vraagService.save(vraag);
+		return Response.ok(vraag).build();
 	}
 	
 	@DELETE
 	@Consumes (MediaType.APPLICATION_JSON)
-	public Response delete(Vragen vragen) {
-		vragenService.delete(vragen);
-		return Response.accepted(vragen.getVraag1()).build();
+	public Response delete(Vraag vraag) {
+		vraagService.delete(vraag);
+		return Response.ok(vraag).build();
 	}
 	
 	@DELETE //toegevoegd door Cris
 	@Path("{id}")
 	public Response deleteById(@PathParam("id") Long id) {
-		Optional<Vragen> optionalToBeDeleted = this.vragenService.findById(id);
+		Optional<Vraag> optionalToBeDeleted = this.vraagService.findById(id);
 
 		if(optionalToBeDeleted.isPresent()) {
-			this.vragenService.deleteById(id); 
+			this.vraagService.deleteById(id); 
 			return Response.ok().build();
 		}
 		else {

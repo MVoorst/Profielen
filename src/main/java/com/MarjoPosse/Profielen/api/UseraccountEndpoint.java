@@ -76,20 +76,18 @@ public class UseraccountEndpoint {
 			}
 		}
 	}
-	/*
-	@PUT
-	@Path("{id}")
+	
+	@PUT	//by Marjolijn :)
+	@Path("naw")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response Update(@PathParam("id") long id,Useraccount input) {
-	putInlogpagina(Useraccount useraccount) {
-		Optional<Useraccount> optionaluseraccountUpdate=this.useraccountService.findById(id);
-		if(optionaluseraccountUpdate isPresent) {
-		
-		Useraccount result = useraccountService.save(useraccount);
-		return Response.accepted(result.getGebruikersnaam()).build();
+	public Response putVragen(Useraccount user) {
+		Useraccount result = useraccountService.save(user);
+		return Response.accepted(result.getId()).build();
 	}
-	*/
+	
+	
+	
 	@DELETE
 	public Response deleteInlogpagina(Useraccount useraccount) {
 		useraccountService.delete(useraccount);
