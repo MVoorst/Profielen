@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.*;
+import com.MarjoPosse.Profielen.Message.Message;
 import com.MarjoPosse.Profielen.controller.*;
 
 @Path("useraccount")
@@ -28,7 +29,7 @@ import com.MarjoPosse.Profielen.controller.*;
 public class UseraccountEndpoint {
 	
 	@Autowired
-	private UseraccountRepository useraccountService;
+	private UseraccountService useraccountService;
 
 	@GET
 	public Response list(){
@@ -59,39 +60,34 @@ public class UseraccountEndpoint {
 		return Response.accepted(login).build();
 
 	}
-
-	@POST				
-	@Path("controle")		
-	public Response checkLogin(Useraccount login) {
-		if (login==null) {					
+				
+	@POST
+	@Path("Login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response checkLogin(Useraccount user) {
+		if (user == null) {
 			return Response.status(Status.NOT_ACCEPTABLE).build();
+		} else {
+			if (useraccountService.loginCheck(user) == true) {
+				return Response.accepted(new Message("Success")).build();
+			} else {
+				return Response.status(Status.NOT_ACCEPTABLE).build();
+			}
 		}
-		Optional<Useraccount> result = useraccountService.findByGebruikersnaam(login.getGebruikersnaam());	
-		if (!result.isPresent()) {			
-			return Response.status(Status.NOT_FOUND).build();
-		} 
-											
-		Useraccount fLogin = result.get();		
-		if (fLogin.getWachtwoord().equals(login.getWachtwoord())) {			
-			return Response.accepted(fLogin.getId()).build();					
-		}else {
-			return Response.status(Status.NOT_ACCEPTABLE).build();		
-		}	
 	}
-	/*
-	@PUT
-	@Path("{id}")
+	
+	@PUT	//by Marjolijn :)
+	@Path("naw")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response Update(@PathParam("id") long id,Useraccount input) {
-	putInlogpagina(Useraccount useraccount) {
-		Optional<Useraccount> optionaluseraccountUpdate=this.useraccountService.findById(id);
-		if(optionaluseraccountUpdate isPresent) {
-		
-		Useraccount result = useraccountService.save(useraccount);
-		return Response.accepted(result.getGebruikersnaam()).build();
+	public Response putVragen(Useraccount user) {
+		Useraccount result = useraccountService.save(user);
+		return Response.accepted(result.getId()).build();
 	}
-	*/
+	
+	
+	
 	@DELETE
 	public Response deleteInlogpagina(Useraccount useraccount) {
 		useraccountService.delete(useraccount);
