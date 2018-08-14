@@ -1,23 +1,38 @@
 package com.MarjoPosse.Profielen.email;
 
-import javax.mail.*;
-import java.util.*;
-import javax.mail.internet.*;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 
+@Component
 public class SendEmail {
+	
+	@Value("${mail.host}")
+	private String host;
+	
+	private String from;
+	private String username;
+	private String password;
+	
 	public void sendEmail(String to, String subject, String emailbody) throws MessagingException{
 	      // Recipient's email ID needs to be mentioned.
-		  //String to = "tesvdvlist@gmail.com"
-
+		 
 	      // Sender's email ID needs to be mentioned
 	      String from = "p.vanhout83@gmail.com";
 	      final String username = "p.vanhout83";//change accordingly
 	      final String password = "MercedesB250";//change accordingly
 
-	      // Assuming you are sending email through relay.jangosmtp.net
+	      // Assuming you are sending email through smtp.gmail.com
 	      String host = "smtp.gmail.com";
 
 	      Properties props = new Properties();
