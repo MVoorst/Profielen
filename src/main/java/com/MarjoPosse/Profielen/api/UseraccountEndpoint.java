@@ -63,7 +63,6 @@ public class UseraccountEndpoint {
 		try {
 			sendemail.sendEmail(login.getEmailadres(),"hallo dit is een test","Dit is uw wachtwoord: "+sbGeneratedPassword+" Dat zou heel erg mooi zijn.");
 		} catch (MessagingException e) {
-			System.out.println("foutje");
 			e.printStackTrace();
 		}
 		return Response.accepted(login).build();
