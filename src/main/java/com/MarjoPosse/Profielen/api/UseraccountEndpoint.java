@@ -58,9 +58,7 @@ public class UseraccountEndpoint {
 	        sbGeneratedPassword.append(characters.charAt(random.nextInt(characters.length())));
 	     }
 		login.setWachtwoord(sbGeneratedPassword.toString());  
-		
 		useraccountService.save (login);
-		
 		SendEmail sendemail = new SendEmail();
 		try {
 			sendemail.sendEmail(login.getEmailadres(),"hallo dit is een test","Dit is uw wachtwoord! "+sbGeneratedPassword+" Dat zou heel erg mooi zijn.");
