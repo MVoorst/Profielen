@@ -13,7 +13,7 @@ private Long id;
 public long getId() {
 	return id;
 }
-public void setId(long id) {
+public void setId(Long id) {
 	this.id = id;
 }
 private String gebruikersnaam;
@@ -31,7 +31,6 @@ private String postcode;
 private String woonplaats;
 private String linkedinadres;
 private String githubadres;
-private String succes;
 
 public String getVoornaam() {
 	return voornaam;
@@ -117,11 +116,5 @@ public String getEmailadres() {
 }
 public void setEmailadres(String emailadres) {
 	this.emailadres = emailadres;
-}
-public String getSucces() {
-	return succes;
-}
-public void setSucces(String succes) {
-	this.succes = succes;
 }
 }

@@ -3,6 +3,8 @@ package com.MarjoPosse.Profielen.api;
 import java.util.Optional;
 import java.util.Random;
 
+import javax.mail.MessagingException;
+import javax.mail.Transport;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.*;
+import com.MarjoPosse.Profielen.email.SendEmail;
 import com.MarjoPosse.Profielen.Message.Message;
 import com.MarjoPosse.Profielen.controller.*;
 
@@ -55,8 +58,13 @@ public class UseraccountEndpoint {
 	        sbGeneratedPassword.append(characters.charAt(random.nextInt(characters.length())));
 	     }
 		login.setWachtwoord(sbGeneratedPassword.toString());  
-		
-		useraccountService.save (login);		
+		useraccountService.save (login);
+		SendEmail sendemail = new SendEmail();
+		try {
+			sendemail.sendEmail(login.getEmailadres(),"hallo dit is een test","Dit is uw wachtwoord: "+sbGeneratedPassword+" Dat zou heel erg mooi zijn.");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
 		return Response.accepted(login).build();
 
 	}
@@ -86,7 +94,7 @@ public class UseraccountEndpoint {
 		return Response.accepted(result.getId()).build();
 	}
 	
-	
+
 	
 	@DELETE
 	public Response deleteInlogpagina(Useraccount useraccount) {
