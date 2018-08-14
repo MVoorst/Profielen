@@ -69,11 +69,6 @@ public class AdminaccountEndpoint {
 		}
 	}
 	
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> master
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteVrijwilligerswerk(Adminaccount adminaccount) {
