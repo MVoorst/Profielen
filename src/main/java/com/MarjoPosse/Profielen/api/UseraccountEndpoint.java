@@ -61,7 +61,7 @@ public class UseraccountEndpoint {
 		useraccountService.save (login);
 		SendEmail sendemail = new SendEmail();
 		try {
-			sendemail.sendEmail(login.getEmailadres(),"hallo dit is een test","Dit is uw wachtwoord! "+sbGeneratedPassword+" Dat zou heel erg mooi zijn.");
+			sendemail.sendEmail(login.getEmailadres(),"hallo dit is een test","Dit is uw wachtwoord: "+sbGeneratedPassword+" Dat zou heel erg mooi zijn.");
 		} catch (MessagingException e) {
 			System.out.println("foutje");
 			e.printStackTrace();
