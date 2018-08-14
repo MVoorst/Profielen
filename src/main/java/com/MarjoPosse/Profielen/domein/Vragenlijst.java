@@ -10,17 +10,9 @@ public class Vragenlijst {
 @GeneratedValue(strategy = GenerationType.AUTO)
 @Id	
 private long id;
-private String vraag1;
-private int vragenhoeveelheid;//C: weghalen, moet eigenlijk anders
 
-@OneToMany(mappedBy="vragenlijst")
-//@OrderBy("name ASC")
-private List vragen;
-
-//public Vragenlijst() {
-//    vragen = new ArrayList<Vraag>();
-//    System.out.println("Hier is Arraylist");
-//}
+private String vraag;
+private int vragenhoeveelheid;
 
 @ManyToOne
 private Adminaccount persoon;
@@ -34,10 +26,10 @@ private Adminaccount persoon;
 		this.id = id;
 	}
 	public String getVraag1() {
-		return vraag1;
+		return vraag;
 	}
 	public void setVraag1(String vraag1) {
-		this.vraag1 = vraag1;
+		this.vraag = vraag1;
 	}
 	public boolean isPresent() {
 		return false;
