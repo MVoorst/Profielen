@@ -119,11 +119,11 @@ function nieuweNAW() {
 		    //var GetResponseIn = this.responseText;
 		    //var ResponseIn = JSON.parse(GetResponseIn);
 		    //console.log(ResponseIn);
-		    getPass(mailParticipant, usernameParticipant);
+		    //getPass(mailParticipant, usernameParticipant);
 		 	}
 	};
 
-	yhttp.open("PUT", "http://localhost:8082/api/useraccount", true);
+	yhttp.open("PUT", "http://localhost:8082/api/useraccount/naw", true);
 	yhttp.setRequestHeader ("content-type", "application/json");
 	yhttp.send(newParticipantjson);
 
