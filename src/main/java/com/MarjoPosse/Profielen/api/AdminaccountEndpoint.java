@@ -68,6 +68,15 @@ public class AdminaccountEndpoint {
 			}
 		}	
 	}
+	
+	@POST //toegevoegd door Cris
+	@Path("ExportAsWord")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response makeAdminaccount(Adminaccount adminaccount){
+		Adminaccount result = adminaccountService.save(adminaccount);
+		return Response.accepted(result.getGebruikersnaam()).build();
+	}
 
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
