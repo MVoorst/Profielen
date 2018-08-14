@@ -4,7 +4,6 @@ import java.util.Optional;
 import java.util.Random;
 
 import javax.mail.MessagingException;
-import javax.mail.Transport;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,10 +19,10 @@ import javax.ws.rs.core.Response.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.MarjoPosse.Profielen.domein.*;
-import com.MarjoPosse.Profielen.email.SendEmail;
 import com.MarjoPosse.Profielen.Message.Message;
-import com.MarjoPosse.Profielen.controller.*;
+import com.MarjoPosse.Profielen.controller.UseraccountService;
+import com.MarjoPosse.Profielen.domein.Useraccount;
+import com.MarjoPosse.Profielen.email.SendEmail;
 
 @Path("useraccount")
 @Produces(MediaType.APPLICATION_JSON)
@@ -34,6 +33,9 @@ public class UseraccountEndpoint {
 	@Autowired
 	private UseraccountService useraccountService;
 
+	@Autowired
+	private SendEmail sendEmail;
+	
 	@GET
 	public Response list(){
 		return Response.ok(this.useraccountService.findAll()).build();
@@ -59,9 +61,8 @@ public class UseraccountEndpoint {
 	     }
 		login.setWachtwoord(sbGeneratedPassword.toString());  
 		useraccountService.save (login);
-		SendEmail sendemail = new SendEmail();
 		try {
-			sendemail.sendEmail(login.getEmailadres(),"hallo dit is een test","Dit is uw wachtwoord: "+sbGeneratedPassword+" Dat zou heel erg mooi zijn.");
+			sendEmail.sendEmail(login.getEmailadres(),"hallo dit is een test","Dit is uw wachtwoord: "+sbGeneratedPassword+" Dat zou heel erg mooi zijn.");
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
