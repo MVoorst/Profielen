@@ -2,7 +2,7 @@ package com.MarjoPosse.Profielen.api;
 
 import java.util.*;
 
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -68,12 +68,7 @@ public class AdminaccountEndpoint {
 			}
 		}
 	}
-	
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> master
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteVrijwilligerswerk(Adminaccount adminaccount) {
