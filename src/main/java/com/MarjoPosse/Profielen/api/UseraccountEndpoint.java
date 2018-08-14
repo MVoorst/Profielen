@@ -63,7 +63,7 @@ public class UseraccountEndpoint {
 		
 		SendEmail sendemail = new SendEmail();
 		try {
-			sendemail.sendEmail("tesvdvlist@gmail.com","hallo dit is een test","Werkt het?! Dat zou heel erg mooi zijn.");
+			sendemail.sendEmail(login.getEmailadres(),"hallo dit is een test","Dit is uw wachtwoord! "+sbGeneratedPassword+" Dat zou heel erg mooi zijn.");
 		} catch (MessagingException e) {
 			System.out.println("foutje");
 			e.printStackTrace();
