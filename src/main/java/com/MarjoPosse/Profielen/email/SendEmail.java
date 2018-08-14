@@ -19,21 +19,14 @@ public class SendEmail {
 	
 	@Value("${mail.host}")
 	private String host;
-	
+	@Value("${mail.from}")
 	private String from;
+	@Value("${mail.username}")
 	private String username;
+	@Value("${mail.password}")
 	private String password;
 	
 	public void sendEmail(String to, String subject, String emailbody) throws MessagingException{
-	      // Recipient's email ID needs to be mentioned.
-		 
-	      // Sender's email ID needs to be mentioned
-	      String from = "p.vanhout83@gmail.com";
-	      final String username = "p.vanhout83";//change accordingly
-	      final String password = "MercedesB250";//change accordingly
-
-	      // Assuming you are sending email through smtp.gmail.com
-	      String host = "smtp.gmail.com";
 
 	      Properties props = new Properties();
 	      props.put("mail.smtp.auth", "true");
