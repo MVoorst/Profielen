@@ -44,6 +44,4 @@ public class Adminaccount {
 	public void setNaamMaster(String naamMaster) {
 		this.naamMaster = naamMaster;
 	}
-
-
 }

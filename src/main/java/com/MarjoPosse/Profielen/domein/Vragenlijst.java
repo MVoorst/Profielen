@@ -7,7 +7,8 @@ public class Vragenlijst {
 @GeneratedValue(strategy = GenerationType.AUTO)
 @Id	
 private long id;
-private String vraag1;
+
+private String vraag;
 private int vragenhoeveelheid;
 
 @ManyToOne
@@ -20,10 +21,10 @@ private Adminaccount persoon;
 		this.id = id;
 	}
 	public String getVraag1() {
-		return vraag1;
+		return vraag;
 	}
 	public void setVraag1(String vraag1) {
-		this.vraag1 = vraag1;
+		this.vraag = vraag1;
 	}
 	public boolean isPresent() {
 		return false;

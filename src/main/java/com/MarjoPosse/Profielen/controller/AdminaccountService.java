@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.MarjoPosse.Profielen.api.UseraccountEndpoint;
 import com.MarjoPosse.Profielen.domein.*;
 @Service
 @Transactional
@@ -49,7 +50,13 @@ public class AdminaccountService {
 		}else {
 			return false;
 		}
+	}
 
+	public boolean maakUser() {
+		UseraccountEndpoint useraccountEndpoint = new UseraccountEndpoint();
+		useraccountEndpoint.create(null);
+		//}
+		return true;
 	}
 
 

@@ -66,9 +66,13 @@ public class AdminaccountEndpoint {
 			} else {
 				return Response.status(Status.NOT_ACCEPTABLE).build();
 			}
-		}
+		}	
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> master
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteVrijwilligerswerk(Adminaccount adminaccount) {
