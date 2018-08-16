@@ -62,7 +62,7 @@ public class UseraccountEndpoint {
 		login.setWachtwoord(sbGeneratedPassword.toString());  
 		useraccountService.save (login);
 		try {
-			sendEmail.sendEmail(login.getEmailadres(),"hallo dit is een test","Dit is uw wachtwoord: "+sbGeneratedPassword+" Dat zou heel erg mooi zijn.");
+			sendEmail.sendEmail(login.getEmailadres(),"Welkom bij Qien","Beste "+login.getVoornaam()+",\nEr is een account aangemaakt voor u.\nDit is uw wachtwoord: "+sbGeneratedPassword+".\nSucces met het invullen van de vragen.\n\nGroet,\nQien BV");
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
