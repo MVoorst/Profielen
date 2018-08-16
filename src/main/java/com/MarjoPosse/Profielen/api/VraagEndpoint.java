@@ -64,6 +64,7 @@ public class VraagEndpoint {
 		Vraag result = vraagService.save(vraag);
 		return Response.ok(vraag).build();
 	}
+
 	
 	@DELETE
 	@Consumes (MediaType.APPLICATION_JSON)

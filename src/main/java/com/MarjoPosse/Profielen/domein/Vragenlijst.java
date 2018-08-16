@@ -1,6 +1,9 @@
 package com.MarjoPosse.Profielen.domein;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Vragenlijst {
@@ -11,8 +14,10 @@ private long id;
 private String vraag;
 private int vragenhoeveelheid;
 
-@ManyToOne
-private Adminaccount persoon;
+//@ManyToOne
+//private Adminaccount persoon;
+
+//vragenlijst, vragen oproepen, gebruik maken van Hashset 
 
 	public long getId() {
 		return id;

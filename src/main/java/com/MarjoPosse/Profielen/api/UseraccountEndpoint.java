@@ -52,7 +52,7 @@ public class UseraccountEndpoint {
 		}	
 
 	@POST
-	public Response create(Useraccount login) {		
+	public Response create(Useraccount login) {	
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 		StringBuilder sbGeneratedPassword = new StringBuilder();
 		Random random = new Random();
