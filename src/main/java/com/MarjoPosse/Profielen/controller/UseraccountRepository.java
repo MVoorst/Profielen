@@ -1,5 +1,6 @@
 package com.MarjoPosse.Profielen.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -12,6 +13,6 @@ public interface UseraccountRepository extends CrudRepository<Useraccount, Long>
 
 	Optional<Useraccount> findByGebruikersnaam(String gebruikersnaam);
 	Optional<Useraccount> findByWachtwoord(String gebruikersnaam);
-	String findByEmailadres(String emailadres);
+	//List<Useraccount> findByEmailAddressAndLastname(String emailAddress, String lastname);
 	}
 
