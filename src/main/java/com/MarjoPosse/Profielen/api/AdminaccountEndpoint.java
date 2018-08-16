@@ -13,6 +13,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+
+import org.docx4j.openpackaging.exceptions.Docx4JException;
+import org.docx4j.openpackaging.exceptions.InvalidFormatException;
+import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -57,7 +61,7 @@ public class AdminaccountEndpoint {
 	@Path("Login")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response checkLogin(Adminaccount admin) {
+	public Response createUseraccount(Adminaccount admin) {
 		if (admin == null) {
 			return Response.status(Status.NOT_ACCEPTABLE).build();
 		} else {
@@ -67,15 +71,6 @@ public class AdminaccountEndpoint {
 				return Response.status(Status.NOT_ACCEPTABLE).build();
 			}
 		}	
-	}
-	
-	@POST //toegevoegd door Cris
-	@Path("ExportAsWord")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response makeAdminaccount(Adminaccount adminaccount){
-		Adminaccount result = adminaccountService.save(adminaccount);
-		return Response.accepted(result.getGebruikersnaam()).build();
 	}
 
 	@DELETE
