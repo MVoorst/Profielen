@@ -67,11 +67,28 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency> 
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
 			<version>2.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		
+		<dependency> <!--dependencies voor Word; toegevoegd door Crispijn--> 
+		    <groupId>org.docx4j</groupId>
+		    <artifactId>docx4j</artifactId>
+		    <version>3.3.5</version>
+		</dependency>
+		<dependency> 
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		    <version>2.1</version>
 		</dependency>
 	</dependencies>
 
@@ -90,6 +107,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
+	
 </project>
