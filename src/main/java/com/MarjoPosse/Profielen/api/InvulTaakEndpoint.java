@@ -14,11 +14,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.MarjoPosse.Profielen.controller.repository.InvulTaakService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.*;
-import com.MarjoPosse.Profielen.controller.*;
 
 @Path("invultaak")
 @Component

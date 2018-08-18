@@ -1,7 +1,8 @@
-package com.MarjoPosse.Profielen.controller;
+package com.MarjoPosse.Profielen.controller.repository;
 
 import java.util.Optional;
 
+import com.MarjoPosse.Profielen.controller.interfaces.UseraccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

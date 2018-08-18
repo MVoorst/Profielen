@@ -1,5 +1,6 @@
 package com.MarjoPosse.Profielen.api;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 import java.util.Random;
 
@@ -20,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.Message.Message;
-import com.MarjoPosse.Profielen.controller.UseraccountService;
+import com.MarjoPosse.Profielen.controller.repository.UseraccountService;
 import com.MarjoPosse.Profielen.domein.Useraccount;
 import com.MarjoPosse.Profielen.email.SendEmail;
 
@@ -55,8 +56,16 @@ public class UseraccountEndpoint {
 	public Response create(Useraccount login) {	
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 		StringBuilder sbGeneratedPassword = new StringBuilder();
-		Random random = new Random();
-	    for (int i = 0; i < 6; i++) {
+		Random random;
+		try {
+			random = java.security.SecureRandom.getInstance("NativePRNGNonBlocking");//WE use a proper Security sound RNG.
+		} catch (NoSuchAlgorithmException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			throw new Error(e1.getLocalizedMessage());
+		}
+
+	    for (int i = 0; i < 16; i++) {
 	        sbGeneratedPassword.append(characters.charAt(random.nextInt(characters.length())));
 	     }
 		login.setWachtwoord(sbGeneratedPassword.toString());  

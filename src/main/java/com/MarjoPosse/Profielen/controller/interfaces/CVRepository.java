@@ -1,4 +1,4 @@
-package com.MarjoPosse.Profielen.controller;
+package com.MarjoPosse.Profielen.controller.interfaces;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;

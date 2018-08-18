@@ -1,6 +1,5 @@
 package com.MarjoPosse.Profielen.api;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.ws.rs.Consumes;
@@ -15,11 +14,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.MarjoPosse.Profielen.controller.repository.VragenlijstService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.*;
-import com.MarjoPosse.Profielen.controller.*;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.TEXT_PLAIN)

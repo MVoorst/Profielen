@@ -1,11 +1,8 @@
 package com.MarjoPosse.Profielen.api;
 
-import java.io.File;
 import java.util.*;
 
 import javax.ws.rs.PathParam;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,15 +14,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.MarjoPosse.Profielen.controller.repository.CVService;
 import org.docx4j.openpackaging.exceptions.Docx4JException;
-import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
-import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.domein.*;
 import com.MarjoPosse.Profielen.Message.Message;
-import com.MarjoPosse.Profielen.controller.*;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.TEXT_PLAIN)
@@ -61,13 +56,18 @@ public class CVEndpoint {
 		return Response.accepted(result.getNaam()).build();	
 	}
 	
-	@POST //toegevoegd door Cris
-	@Path("ExportAsWord")
+	@GET //toegevoegd door Cris
+	@Path("ExportAsWord/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response exportAsWord(CV cv) throws Docx4JException {
-		cvService.saveAsWord(cv);
+	public Response exportAsWord(@PathParam("id")long id, CV cv) throws Docx4JException {
+		if(cvService.saveAsWord(cv, id) != null) {
+		cvService.saveAsWord(cv, id);
+	
 	    return Response.accepted(new Message("Succes")).build();
+		} else {
+			return Response.status(Status.NOT_FOUND).build();
+		}
 	}
 	
 	@PUT

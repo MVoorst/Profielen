@@ -26,3 +26,6 @@
 /nbdist/
 /.nb-gradle/
 /bin/
+
+.DS_STORE
+.DS_Store

@@ -26,13 +26,14 @@ public class SendEmail {
 	@Value("${mail.password}")
 	private String password;
 	
+	
 	public void sendEmail(String to, String subject, String emailbody) throws MessagingException{
 
 	      Properties props = new Properties();
 	      props.put("mail.smtp.auth", "true");
 	      props.put("mail.smtp.starttls.enable", "true");
-	      props.put("mail.smtp.host", host);
-	      props.put("mail.smtp.port", "25");
+	      props.put("mail.smtp.host", host);//host
+	      props.put("mail.smtp.port", "1025");// \"25\" port
 
 	      // Get the Session object.
 	      Session session = Session.getInstance(props,
@@ -68,4 +69,14 @@ public class SendEmail {
 	         throw new RuntimeException(e);
 	      }
 	   }
+	public static void main(String[] args){
+	  SendEmail email = new SendEmail();
+	  try {
+		email.sendEmail("Henk@example.com", "Mail Test", "I want a Stronger Body!!");
+	} catch (MessagingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+	
 	}

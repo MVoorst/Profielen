@@ -1,10 +1,12 @@
-package com.MarjoPosse.Profielen.controller;
+package com.MarjoPosse.Profielen.controller.repository;
 
 import java.io.File;
 import java.util.Optional;
 
+import javax.persistence.OneToMany;
+
+import com.MarjoPosse.Profielen.controller.interfaces.CVRepository;
 import org.docx4j.openpackaging.exceptions.Docx4JException;
-import org.docx4j.openpackaging.exceptions.InvalidFormatException;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +25,22 @@ public class CVService {
 		return cvRepository.save(cv);
 	}
 	
-	public CV saveAsWord(CV cv) throws Docx4JException { //toegevoegd door Cris
-	    WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
-	    MainDocumentPart mainDocument = wordMLPackage.getMainDocumentPart();
-	    mainDocument.addStyledParagraphOfText("Title", "Qien CV");
-	    mainDocument.addParagraphOfText(
-	    		"Naam: ");
-	    File exportFile = new File("QienCV.docx");	    
-	    wordMLPackage.save(exportFile);
-		return cvRepository.save(cv);	
+	@OneToMany
+	public CV saveAsWord(CV cv, long id) throws Docx4JException { //toegevoegd door Cris
+		Optional<CV> cvtemp = cvRepository.findById(id);
+		if(cvtemp.isPresent()) {
+		    WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
+		    MainDocumentPart mainDocument = wordMLPackage.getMainDocumentPart();
+		    mainDocument.addStyledParagraphOfText("Title", "Qien CV");
+		    mainDocument.addParagraphOfText(
+		    		"Naam: " + cvtemp.get().getUseraccount().getVoornaam());
+		    File exportFile = new File("QienCV.docx");	    
+		    wordMLPackage.save(exportFile);
+			return cvRepository.save(cv);
+		}else {
+			return null;
+		}
+	
 	}
 
 	public Optional<CV> findById(Long id) {
@@ -55,4 +64,6 @@ public class CVService {
 		
 		return cvRepository.existsById(id);
 	}
+
+
 }

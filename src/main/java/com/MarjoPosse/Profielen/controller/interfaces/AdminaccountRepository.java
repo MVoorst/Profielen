@@ -1,4 +1,4 @@
-package com.MarjoPosse.Profielen.controller;
+package com.MarjoPosse.Profielen.controller.interfaces;
 
 import java.util.List;
 import java.util.Optional;
