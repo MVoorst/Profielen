@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class InvulTaak {
@@ -12,6 +13,9 @@ public class InvulTaak {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String antwoord;
+	
+	@OneToMany
+	Useraccount useraccount;
 	
 	public long getId() {
 		return id;
