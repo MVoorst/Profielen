@@ -14,10 +14,9 @@ private long id;
 private String vraag;
 private int vragenhoeveelheid;
 
-//@ManyToOne
-//private Adminaccount persoon;
-
-//vragenlijst, vragen oproepen, gebruik maken van Hashset 
+//	@OneToMany
+//	Useraccount useraccount;
+	
 
 	public long getId() {
 		return id;
