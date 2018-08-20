@@ -1,51 +1,25 @@
 package com.MarjoPosse.Profielen.domein;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-
 public class Useraccount {
-@Id @GeneratedValue(strategy = GenerationType.AUTO)
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
 private Long id;
 
-@ManyToOne
-Feedback feedback;
-@ManyToOne
-InvulTaak invultaak;
-@ManyToOne
-Vragenlijst vragenlijst;
-
-public Feedback getFeedback() {
-	return feedback;
-}
-public void setFeedback(Feedback feedback) {
-	this.feedback = feedback;
-}
-public InvulTaak getInvultaak() {
-	return invultaak;
-}
-public void setInvultaak(InvulTaak invultaak) {
-	this.invultaak = invultaak;
-}
-public Vragenlijst getVragenlijst() {
-	return vragenlijst;
-}
-public void setVragenlijst(Vragenlijst vragenlijst) {
-	this.vragenlijst = vragenlijst;
-}
+    @OneToMany(fetch = FetchType.EAGER)
+	private Set<Feedback> feedback;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Voorbeelden> voorbeeld;
+    @ManyToOne(fetch = FetchType.EAGER)
+    InvulTaak invultaak;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Vragenlijst> vragenlijst;
 
 
-
-public long getId() {
-	return id;
-}
-public void setId(Long id) {
-	this.id = id;
-}
 private String gebruikersnaam;
 private String wachtwoord;
 private String emailadres;
@@ -62,6 +36,12 @@ private String woonplaats;
 private String linkedinadres;
 private String githubadres;
 
+    public long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 public String getVoornaam() {
 	return voornaam;
 }
@@ -147,4 +127,36 @@ public String getEmailadres() {
 public void setEmailadres(String emailadres) {
 	this.emailadres = emailadres;
 }
+    public Set<Feedback> getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Set<Feedback> feedback) {
+        this.feedback = feedback;
+    }
+
+    public Set<Voorbeelden> getVoorbeeld() {
+        return voorbeeld;
+    }
+
+    public void setVoorbeeld(Set<Voorbeelden> voorbeeld) {
+        this.voorbeeld = voorbeeld;
+    }
+
+
+    public InvulTaak getInvultaak() {
+        return invultaak;
+    }
+
+    public void setInvultaak(InvulTaak invultaak) {
+        this.invultaak = invultaak;
+    }
+
+    public List<Vragenlijst> getVragenlijst() {
+        return vragenlijst;
+    }
+
+    public void setVragenlijst(List<Vragenlijst> vragenlijst) {
+        this.vragenlijst = vragenlijst;
+    }
 }

@@ -2,12 +2,7 @@ package com.MarjoPosse.Profielen.domein;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Feedback {
@@ -16,21 +11,20 @@ public class Feedback {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String inhoud;
-	
-//	@OneToMany
-//	Useraccount useraccount;
-	
+
+	public List<Useraccount> getUseraccount() {
+		return useraccount;
+	}
+
+	public void setUseraccount(List<Useraccount> useraccount) {
+		this.useraccount = useraccount;
+	}
+
+	@OneToMany (fetch = FetchType.EAGER)
+	private List<Useraccount> useraccount;
 	@ManyToOne
 	Adminaccount adminaccount;
-	
-//    private List feedback;
-//
-//    public void addPhone(Feedback fb) {
-//        this.feedback.add(fb);
-////        if (fb.getInhoud() != this) {
-////            fb.setOwner(this);
-////        }
-//    }
+
 	
 	
 	public Adminaccount getAdminaccount() {

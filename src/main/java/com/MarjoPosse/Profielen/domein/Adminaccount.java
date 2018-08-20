@@ -20,20 +20,12 @@ public class Adminaccount {
 	private String naamMaster;
 	private String gebruikersnaam;
 	private String wachtwoord;
-//	private Set<Feedback> feedbackFunctie = new HashSet<Feedback>(0);
+
 
 	// One to many relaties
 	@OneToOne
 	Vragenlijst vragenlijst;
-//	@OneToMany(fetch = FetchType.LAZY)
-//	public List<Feedback> feedback;
-//	@OneToMany
-//	public Set<Voorbeelden> voorbeeld;
 
-	
-//	public void feedbackFunctie(Set<Feedback> feedbackFunctie) {
-//		this.feedbackFunctie = feedbackFunctie;
-//	}
 	
 	public Vragenlijst getVragenlijst() {
 		return vragenlijst;
