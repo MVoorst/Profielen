@@ -14,6 +14,31 @@ private Long id;
 
 @ManyToOne
 Feedback feedback;
+@ManyToOne
+InvulTaak invultaak;
+@ManyToOne
+Vragenlijst vragenlijst;
+
+public Feedback getFeedback() {
+	return feedback;
+}
+public void setFeedback(Feedback feedback) {
+	this.feedback = feedback;
+}
+public InvulTaak getInvultaak() {
+	return invultaak;
+}
+public void setInvultaak(InvulTaak invultaak) {
+	this.invultaak = invultaak;
+}
+public Vragenlijst getVragenlijst() {
+	return vragenlijst;
+}
+public void setVragenlijst(Vragenlijst vragenlijst) {
+	this.vragenlijst = vragenlijst;
+}
+
+
 
 public long getId() {
 	return id;

@@ -14,8 +14,8 @@ private long id;
 private String vraag;
 private int vragenhoeveelheid;
 
-	@OneToMany
-	Useraccount useraccount;
+//	@OneToMany
+//	Useraccount useraccount;
 	
 
 	public long getId() {

@@ -1,6 +1,11 @@
 package com.MarjoPosse.Profielen.domein;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,17 +20,27 @@ public class Adminaccount {
 	private String naamMaster;
 	private String gebruikersnaam;
 	private String wachtwoord;
+//	private Set<Feedback> feedbackFunctie = new HashSet<Feedback>(0);
 
 	// One to many relaties
 	@OneToOne
 	Vragenlijst vragenlijst;
-	@OneToMany
-	Feedback feedback;
-	@OneToMany
-	Voorbeelden voorbeeld;
+//	@OneToMany(fetch = FetchType.LAZY)
+//	public List<Feedback> feedback;
+//	@OneToMany
+//	public Set<Voorbeelden> voorbeeld;
+
 	
+//	public void feedbackFunctie(Set<Feedback> feedbackFunctie) {
+//		this.feedbackFunctie = feedbackFunctie;
+//	}
 	
-	
+	public Vragenlijst getVragenlijst() {
+		return vragenlijst;
+	}
+	public void setVragenlijst(Vragenlijst vragenlijst) {
+		this.vragenlijst = vragenlijst;
+	}
 	public long getId() {
 		return id;
 	}

@@ -22,6 +22,12 @@ public class CV {
 	@OneToOne
 	Useraccount useraccount;
 	
+	public Useraccount getUseraccount() {
+		return useraccount;
+	}
+	public void setUseraccount(Useraccount useraccount) {
+		this.useraccount = useraccount;
+	}
 	public long getId() {
 		return id;
 	}

@@ -14,8 +14,8 @@ public class InvulTaak {
 	private long id;
 	private String antwoord;
 	
-	@OneToMany
-	Useraccount useraccount;
+//	@OneToMany
+//	Useraccount useraccount;
 	
 	public long getId() {
 		return id;
