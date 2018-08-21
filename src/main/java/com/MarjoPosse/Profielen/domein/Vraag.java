@@ -4,12 +4,14 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Vraag extends Vragenlijst{
+public class Vraag{ //antwoord op de vraag
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private long id;
 	private String contentvraag;
 
+	@OneToOne
+	Vragenlijst vragenlijst;
 //	@ManyToOne
 //	private Vragenlijst vragenlijst;
 //	@OneToMany (fetch = FetchType.EAGER)
@@ -34,5 +36,13 @@ public class Vraag extends Vragenlijst{
 	}
 	public void setContentvraag(String contentvraag) {
 		this.contentvraag = contentvraag;
+	}
+
+	public Vragenlijst getVragenlijst() {
+		return vragenlijst;
+	}
+
+	public void setVragenlijst(Vragenlijst vragenlijst) {
+		this.vragenlijst = vragenlijst;
 	}
 }

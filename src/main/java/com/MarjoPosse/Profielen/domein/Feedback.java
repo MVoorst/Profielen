@@ -12,14 +12,6 @@ public class Feedback {
 	private long id;
 	private String inhoud;
 
-	public List<Useraccount> getUseraccount() {
-		return useraccount;
-	}
-
-	public void setUseraccount(List<Useraccount> useraccount) {
-		this.useraccount = useraccount;
-	}
-
 	@OneToMany (fetch = FetchType.EAGER)
 	private List<Useraccount> useraccount;
 	@ManyToOne
@@ -49,5 +41,12 @@ public class Feedback {
 
 	public void setInhoud(String inhoud) {
 		this.inhoud = inhoud;
+	}
+	public List<Useraccount> getUseraccount() {
+		return useraccount;
+	}
+
+	public void setUseraccount(List<Useraccount> useraccount) {
+		this.useraccount = useraccount;
 	}
 }

@@ -1,5 +1,6 @@
 package com.MarjoPosse.Profielen.api;
 
+import java.security.SecureRandom;
 import java.util.Optional;
 import java.util.Random;
 
@@ -52,14 +53,14 @@ public class UseraccountEndpoint {
 		}	
 
 	@POST
-	public Response create(Useraccount login) {	
+	public Response create(Useraccount login) {
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 		StringBuilder sbGeneratedPassword = new StringBuilder();
-		Random random = new Random();
-	    for (int i = 0; i < 6; i++) {
-	        sbGeneratedPassword.append(characters.charAt(random.nextInt(characters.length())));
-	     }
-		login.setWachtwoord(sbGeneratedPassword.toString());  
+		Random random = new SecureRandom();
+		for (int i = 0; i < 10; i++) {
+			sbGeneratedPassword.append(characters.charAt(random.nextInt(characters.length())));
+		}
+		login.setWachtwoord(sbGeneratedPassword.toString());
 		useraccountService.save (login);
 		try {
 			sendEmail.sendEmail(login.getEmailadres(),"Welkom bij Qien","Beste "+login.getVoornaam()+",\nEr is een account aangemaakt voor u.\nDit is uw wachtwoord: "+sbGeneratedPassword+".\nSucces met het invullen van de vragen.\n\nGroet,\nQien BV");
