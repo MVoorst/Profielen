@@ -7,8 +7,8 @@ import java.util.Set;
 @Entity
 public class Useraccount {
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private Long id;
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private long id;
 
     @OneToMany(fetch = FetchType.EAGER)
 	private Set<Feedback> feedback;
@@ -39,7 +39,7 @@ private String githubadres;
     public long getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 public String getVoornaam() {
