@@ -38,6 +38,7 @@ public class UseraccountEndpoint {
 	
 	@GET
 	public Response list(){
+		System.out.println("in get useraccount");
 		return Response.ok(this.useraccountService.findAll()).build();
 	}
 	@GET
@@ -51,6 +52,18 @@ public class UseraccountEndpoint {
 		return Response.status(Status.NOT_FOUND).build();
 		}	
 
+	@GET //toegevoegd door Crispijn
+	@Path("email={email}")
+	public Response findByEmailadres(@PathParam("email")String emailadres) {
+		Optional<Useraccount> optionaluseraccount=this.useraccountService.findByEmailadres(emailadres);
+		if (optionaluseraccount.isPresent()){
+			Useraccount useraccount = optionaluseraccount.get();
+			 return Response.ok(useraccount).build();
+			}
+		return Response.status(Status.NOT_FOUND).build();
+		}	
+
+	
 	@POST
 	public Response create(Useraccount login) {	
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";

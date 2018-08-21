@@ -21,6 +21,11 @@ public class UseraccountService {
 	public Optional<Useraccount> findById(Long id) {
 		return useraccountRepository.findById(id);
 	}
+	
+	public Optional<Useraccount> findByEmailadres(String emailadres) {
+		return useraccountRepository.findByEmailadres(emailadres);
+	}
+	
 	public void delete(Useraccount useraccount){
 		useraccountRepository.delete(useraccount);
 		}
@@ -35,7 +40,8 @@ public class UseraccountService {
 	}
 	public Optional <Useraccount> findByGebruiksernaam (String gebruikersnaam) {
 		return useraccountRepository.findByGebruikersnaam(gebruikersnaam);
-	}	
+	}
+	
 	public boolean existsById(Long id) {
 		return false;
 
