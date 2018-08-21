@@ -66,6 +66,7 @@ public class UseraccountEndpoint {
 	
 	@POST
 	public Response create(Useraccount login) {	
+		System.out.println("In useraccount post" + login.getEmailadres());
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 		StringBuilder sbGeneratedPassword = new StringBuilder();
 		Random random = new Random();
