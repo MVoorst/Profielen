@@ -48,7 +48,7 @@ public class UseraccountService {
 	}
 	
 	public boolean loginCheck(Useraccount user) {
-		Optional<Useraccount> result = useraccountRepository.findByGebruikersnaam(user.getGebruikersnaam());
+		Optional<Useraccount> result = useraccountRepository.findByEmailadres(user.getEmailadres());
 		if (!result.isPresent()) {
 			return false;
 		}
