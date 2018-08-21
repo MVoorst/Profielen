@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Voorbeelden {
@@ -12,6 +14,17 @@ public class Voorbeelden {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@ManyToOne
+	Adminaccount adminaccount;
+	
+	public Adminaccount getAdminaccount() {
+		return adminaccount;
+	}
+
+	public void setAdminaccount(Adminaccount adminaccount) {
+		this.adminaccount = adminaccount;
+	}
+
 	public long getId() {
 		return id;
 	}
