@@ -1,10 +1,8 @@
 package com.MarjoPosse.Profielen.domein;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class InvulTaak {
@@ -13,9 +11,6 @@ public class InvulTaak {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String antwoord;
-	
-//	@OneToMany
-//	Useraccount useraccount;
 	
 	public long getId() {
 		return id;

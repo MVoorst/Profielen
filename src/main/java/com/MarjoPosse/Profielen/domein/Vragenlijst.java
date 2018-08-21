@@ -13,10 +13,27 @@ private long id;
 
 private String vraag;
 private int vragenhoeveelheid;
+	@OneToMany (fetch = FetchType.EAGER)
+	private List<Useraccount> useraccount;
 
-//	@OneToMany
-//	Useraccount useraccount;
-	
+
+	public String getVraag() {
+		return vraag;
+	}
+
+	public void setVraag(String vraag) {
+		this.vraag = vraag;
+	}
+
+	public List<Useraccount> getUseraccount() {
+		return useraccount;
+	}
+
+	public void setUseraccount(List<Useraccount> useraccount) {
+		this.useraccount = useraccount;
+	}
+
+
 
 	public long getId() {
 		return id;
