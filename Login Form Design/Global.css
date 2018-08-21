@@ -81,3 +81,93 @@ p {
     color: #fff;
     font-size: 15pt;
 }
+
+input {
+  text-align: center;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  height: 10vw;
+  font-size: 2vw;
+  width: 100vw;
+}
+
+textarea {
+  text-align: center;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 5px;
+  width: 100vw;
+  height: 50vh;
+  font-size: 2vw;
+}
+
+button {
+  border: none;
+  background-color: white;
+  position: fixed;
+  right: 5px;
+  top: 5px;
+  transition: transform .5s;
+}
+
+input:focus {
+  outline: none;
+  color: orange;
+  border-radius: 3px;
+}
+
+textarea:focus {
+  outline: none;
+  color: orange;
+  border-radius: 7px;
+}
+
+button:focus {
+  outline: none;
+  transform: scale(0);
+  transform: rotate(360deg);
+}
+
+.myButton{
+    background: () no-repeat;
+    cursor:pointer;
+    border:none;
+    width:30%;
+    height:30%;
+	    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-120%,-0%);
+    box-sizing: border-box;
+    padding: 10% 70px;
+}
+
+.myButton:active  /* use Dot here */
+{   
+  outline: none;
+  transform: scale(0);
+  transform: rotate(360deg);
+}
+
+.myButton2{
+    background: () no-repeat;
+    cursor:pointer;
+    border:none;
+    width:30%;
+    height:30%;
+	    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(40%,-0%);
+    box-sizing: border-box;
+    padding: 10% 70px;
+}
+
+.myButton2:active  /* use Dot here */
+{   
+  outline: none;
+  transform: scale(0);
+  transform: rotate(360deg);
+}

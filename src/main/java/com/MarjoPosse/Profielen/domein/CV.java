@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CV {
@@ -18,7 +19,15 @@ public class CV {
 	private int nJarenGewerkt;
 	private int hoeveelheid;
 	
+	@OneToOne
+	Useraccount useraccount;
 	
+	public Useraccount getUseraccount() {
+		return useraccount;
+	}
+	public void setUseraccount(Useraccount useraccount) {
+		this.useraccount = useraccount;
+	}
 	public long getId() {
 		return id;
 	}
