@@ -25,6 +25,11 @@ public class AdminaccountService {
 	public Optional<Adminaccount> findById(Long id) {
 		return adminaccountRepository.findById(id);
 	}
+	
+	public Optional <Adminaccount> findByGebruikersnaam (String gebruikersnaam) {
+		return adminaccountRepository.findByGebruikersnaam(gebruikersnaam);
+	}
+	
 	public void delete(Adminaccount adminaccount){
 		adminaccountRepository.delete(adminaccount);
 	}
