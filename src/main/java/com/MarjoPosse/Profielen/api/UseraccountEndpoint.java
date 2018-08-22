@@ -67,6 +67,7 @@ public class UseraccountEndpoint {
 	
 	@POST
 	public Response create(Useraccount login) {
+		String fakeEmail = "onzin@example.com";
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 		StringBuilder sbGeneratedPassword = new StringBuilder();
 		Random random = new SecureRandom();
@@ -76,7 +77,12 @@ public class UseraccountEndpoint {
 		login.setWachtwoord(sbGeneratedPassword.toString());
 		useraccountService.save (login);
 		try {
-			sendEmail.sendEmail(login.getEmailadres(),"Welkom bij Qien","Beste "+login.getVoornaam()+",\nEr is een account aangemaakt voor u.\nDit is uw wachtwoord: "+sbGeneratedPassword+".\nSucces met het invullen van de vragen.\n\nGroet,\nQien BV");
+			if(login.getEmailadres() != null) {
+				sendEmail.sendEmail(login.getEmailadres(), "Welkom bij Qien", "Beste " + login.getVoornaam() + ",\nEr is een account aangemaakt voor u.\nDit is uw wachtwoord: " + sbGeneratedPassword + ".\nSucces met het invullen van de vragen.\n\nGroet,\nQien BV");
+			}else{// aangepast door Arne om Jenkins te fixen. WEGHALEN BIJ APPLOCATIE ALS DEZE AF IS
+					sendEmail.sendEmail(fakeEmail,"Welkom bij Qien","Beste "+login.getVoornaam()+",\nEr is een account aangemaakt voor u.\nDit is uw wachtwoord: "+sbGeneratedPassword+".\nSucces met het invullen van de vragen.\n\nGroet,\nQien BV");
+					System.err.println("Dit is GEEN echt emailadres, WIJZIG dit in de code AUB");
+			}
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
