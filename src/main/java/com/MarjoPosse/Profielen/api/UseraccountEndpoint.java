@@ -66,6 +66,7 @@ public class UseraccountEndpoint {
 	
 	@POST
 	public Response create(Useraccount login) {	
+		System.out.println("In useraccount post" + login.getEmailadres());
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 		StringBuilder sbGeneratedPassword = new StringBuilder();
 		Random random = new Random();
@@ -104,7 +105,6 @@ public class UseraccountEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response putVragen(Useraccount user) {
-		Useraccount result = useraccountService.save(user);
 		return Response.accepted(result.getId()).build();
 	}
 	
