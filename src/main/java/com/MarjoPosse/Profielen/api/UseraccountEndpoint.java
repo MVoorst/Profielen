@@ -66,8 +66,8 @@ public class UseraccountEndpoint {
 
 	
 	@POST
-	public Response create(Useraccount login) {
-		String fakeEmail = "onzin@example.com";
+	public Response create(Useraccount login) {	
+		System.out.println("In useraccount post" + login.getEmailadres());
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 		StringBuilder sbGeneratedPassword = new StringBuilder();
 		Random random = new SecureRandom();
@@ -79,9 +79,6 @@ public class UseraccountEndpoint {
 		try {
 			if(login.getEmailadres() != null) {
 				sendEmail.sendEmail(login.getEmailadres(), "Welkom bij Qien", "Beste " + login.getVoornaam() + ",\nEr is een account aangemaakt voor u.\nDit is uw wachtwoord: " + sbGeneratedPassword + ".\nSucces met het invullen van de vragen.\n\nGroet,\nQien BV");
-			}else{// aangepast door Arne om Jenkins te fixen. WEGHALEN BIJ APPLOCATIE ALS DEZE AF IS
-					sendEmail.sendEmail(fakeEmail,"Welkom bij Qien","Beste "+login.getVoornaam()+",\nEr is een account aangemaakt voor u.\nDit is uw wachtwoord: "+sbGeneratedPassword+".\nSucces met het invullen van de vragen.\n\nGroet,\nQien BV");
-					System.err.println("Dit is GEEN echt emailadres, WIJZIG dit in de code AUB");
 			}
 		} catch (MessagingException e) {
 			e.printStackTrace();
@@ -111,7 +108,6 @@ public class UseraccountEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response putVragen(Useraccount user) {
-		Useraccount result = useraccountService.save(user);
 		return Response.accepted(result.getId()).build();
 	}
 	
