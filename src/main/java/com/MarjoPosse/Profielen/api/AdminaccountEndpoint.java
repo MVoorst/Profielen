@@ -37,6 +37,7 @@ public class AdminaccountEndpoint {
 		Iterable <Adminaccount> adminaccount = adminaccountService.findAll();
 		return Response.ok(adminaccount).build();
 	}
+	
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -48,6 +49,19 @@ public class AdminaccountEndpoint {
 			}
 		return Response.status(Status.NOT_FOUND).build();
 		}
+	
+	
+	@GET //toegevoegd door Marjolijn
+	@Path("gebruikersnaam={gebruikersnaam}")
+	public Response findByEmailadres(@PathParam("gebruikersnaam")String gebruikersnaam) {
+		Optional<Adminaccount> optionaladminaccount=this.adminaccountService.findByGebruikersnaam(gebruikersnaam);
+		if (optionaladminaccount.isPresent()){
+			Adminaccount adminaccount = optionaladminaccount.get();
+			 return Response.ok(adminaccount).build();
+			}
+		return Response.status(Status.NOT_FOUND).build();
+		}	
+	
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
