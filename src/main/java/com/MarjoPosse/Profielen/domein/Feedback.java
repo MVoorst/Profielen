@@ -1,6 +1,6 @@
 package com.MarjoPosse.Profielen.domein;
 
-import java.util.List;
+
 
 import javax.persistence.*;
 
@@ -11,22 +11,19 @@ public class Feedback {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String inhoud;
-
-
-	@ManyToOne
-	Useraccount useraccount;
-	@ManyToOne
-	Adminaccount adminaccount;
-
 	
-	
-	public Adminaccount getAdminaccount() {
-		return adminaccount;
-	}
 
-	public void setAdminaccount(Adminaccount adminaccount) {
-		this.adminaccount = adminaccount;
-	}
+//<<<<<<< HEAD
+//
+//	@ManyToOne
+//	Useraccount useraccount;
+//=======
+//>>>>>>> master
+	@ManyToOne
+	private Adminaccount adminaccount;
+
+	@OneToOne
+	private InvulTaak invulTaak;
 
 	public long getId() {
 		return id;
@@ -44,6 +41,7 @@ public class Feedback {
 		this.inhoud = inhoud;
 	}
 
+<<<<<<< HEAD
 	public Useraccount getUseraccount() {
 		return useraccount;
 	}
@@ -53,4 +51,23 @@ public class Feedback {
 	}
 
 
+=======
+	public Adminaccount getAdminaccount() {
+		return adminaccount;
+	}
+
+	public void setAdminaccount(Adminaccount adminaccount) {
+		this.adminaccount = adminaccount;
+	}
+
+	public InvulTaak getInvulTaak() {
+		return invulTaak;
+	}
+
+	public void setInvulTaak(InvulTaak invulTaak) {
+		this.invulTaak = invulTaak;
+	}
+	
+	
+>>>>>>> master
 }

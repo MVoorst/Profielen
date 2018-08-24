@@ -15,15 +15,7 @@ public class Voorbeelden {
 	private long id;
 	
 	@ManyToOne
-	Adminaccount adminaccount;
-	
-	public Adminaccount getAdminaccount() {
-		return adminaccount;
-	}
-
-	public void setAdminaccount(Adminaccount adminaccount) {
-		this.adminaccount = adminaccount;
-	}
+	private Vraag vraag;
 
 	public long getId() {
 		return id;
@@ -32,4 +24,13 @@ public class Voorbeelden {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public Vraag getVraag() {
+		return vraag;
+	}
+
+	public void setVraag(Vraag vraag) {
+		this.vraag = vraag;
+	}
+	
 }
