@@ -27,11 +27,13 @@ public class CVService {
 	    WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
 	    MainDocumentPart mainDocument = wordMLPackage.getMainDocumentPart();
 	    mainDocument.addStyledParagraphOfText("Title", "Qien CV");
+		if(cv.getUseraccount().getVoornaam() != null) {
 	    mainDocument.addParagraphOfText(
-	    		"Naam: ");
-	    File exportFile = new File("QienCV.docx");	    
+	    		"Naam: " + cv.getUseraccount().getVoornaam());
+	    		}
+	    File exportFile = new File(cv.getUseraccount().getVoornaam()+cv.getUseraccount().getAchternaam()+".docx");
 	    wordMLPackage.save(exportFile);
-		return cvRepository.save(cv);	
+		return cvRepository.save(cv);
 	}
 
 	public Optional<CV> findById(Long id) {
