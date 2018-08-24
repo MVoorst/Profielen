@@ -10,15 +10,6 @@ public class Useraccount {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private long id;
 
-    @OneToMany(fetch = FetchType.EAGER)
-	private Set<Feedback> feedback;
-    @OneToMany(fetch = FetchType.EAGER)
-    private Set<Voorbeelden> voorbeeld;
-    @ManyToOne(fetch = FetchType.EAGER)
-    InvulTaak invultaak;
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Vragenlijst> vragenlijst;
-
 
 private String gebruikersnaam;
 private String wachtwoord;
@@ -36,127 +27,139 @@ private String woonplaats;
 private String linkedinadres;
 private String githubadres;
 
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
-public String getVoornaam() {
-	return voornaam;
+@OneToMany(fetch = FetchType.EAGER)
+private Set<InvulTaak> invultaak;
+
+public long getId() {
+	return id;
 }
-public void setVoornaam(String voornaam) {
-	this.voornaam = voornaam;
-}
-public String getTussenvoegsel() {
-	return tussenvoegsel;
-}
-public void setTussenvoegsel(String tussenvoegsel) {
-	this.tussenvoegsel = tussenvoegsel;
-}
-public String getAchternaam() {
-	return achternaam;
-}
-public void setAchternaam(String achternaam) {
-	this.achternaam = achternaam;
-}
-public boolean isGeslacht() {
-	return geslacht;
-}
-public void setGeslacht(boolean geslacht) {
-	this.geslacht = geslacht;
-}
-public int getGeboortedatum() {
-	return geboortedatum;
-}
-public void setGeboortedatum(int geboortedatum) {
-	this.geboortedatum = geboortedatum;
-}
-public int getHuisnummer() {
-	return huisnummer;
-}
-public void setHuisnummer(int huisnummer) {
-	this.huisnummer = huisnummer;
-}
-public String getStraat() {
-	return straat;
-}
-public void setStraat(String straat) {
-	this.straat = straat;
-}
-public String getPostcode() {
-	return postcode;
-}
-public void setPostcode(String postcode) {
-	this.postcode = postcode;
-}
-public String getWoonplaats() {
-	return woonplaats;
-}
-public void setWoonplaats(String woonplaats) {
-	this.woonplaats = woonplaats;
-}
-public String getLinkedinadres() {
-	return linkedinadres;
-}
-public void setLinkedinadres(String linkedinadres) {
-	this.linkedinadres = linkedinadres;
-}
-public String getGithubadres() {
-	return githubadres;
-}
-public void setGithubadres(String githubadres) {
-	this.githubadres = githubadres;
+
+public void setId(long id) {
+	this.id = id;
 }
 
 public String getGebruikersnaam() {
 	return gebruikersnaam;
 }
+
 public void setGebruikersnaam(String gebruikersnaam) {
 	this.gebruikersnaam = gebruikersnaam;
 }
+
 public String getWachtwoord() {
 	return wachtwoord;
 }
+
 public void setWachtwoord(String wachtwoord) {
 	this.wachtwoord = wachtwoord;
 }
+
 public String getEmailadres() {
 	return emailadres;
 }
+
 public void setEmailadres(String emailadres) {
 	this.emailadres = emailadres;
 }
-    public Set<Feedback> getFeedback() {
-        return feedback;
-    }
 
-    public void setFeedback(Set<Feedback> feedback) {
-        this.feedback = feedback;
-    }
+public String getVoornaam() {
+	return voornaam;
+}
 
-    public Set<Voorbeelden> getVoorbeeld() {
-        return voorbeeld;
-    }
+public void setVoornaam(String voornaam) {
+	this.voornaam = voornaam;
+}
 
-    public void setVoorbeeld(Set<Voorbeelden> voorbeeld) {
-        this.voorbeeld = voorbeeld;
-    }
+public String getTussenvoegsel() {
+	return tussenvoegsel;
+}
+
+public void setTussenvoegsel(String tussenvoegsel) {
+	this.tussenvoegsel = tussenvoegsel;
+}
+
+public String getAchternaam() {
+	return achternaam;
+}
+
+public void setAchternaam(String achternaam) {
+	this.achternaam = achternaam;
+}
+
+public boolean isGeslacht() {
+	return geslacht;
+}
+
+public void setGeslacht(boolean geslacht) {
+	this.geslacht = geslacht;
+}
+
+public int getGeboortedatum() {
+	return geboortedatum;
+}
+
+public void setGeboortedatum(int geboortedatum) {
+	this.geboortedatum = geboortedatum;
+}
+
+public int getHuisnummer() {
+	return huisnummer;
+}
+
+public void setHuisnummer(int huisnummer) {
+	this.huisnummer = huisnummer;
+}
+
+public String getStraat() {
+	return straat;
+}
+
+public void setStraat(String straat) {
+	this.straat = straat;
+}
+
+public String getPostcode() {
+	return postcode;
+}
+
+public void setPostcode(String postcode) {
+	this.postcode = postcode;
+}
+
+public String getWoonplaats() {
+	return woonplaats;
+}
+
+public void setWoonplaats(String woonplaats) {
+	this.woonplaats = woonplaats;
+}
+
+public String getLinkedinadres() {
+	return linkedinadres;
+}
+
+public void setLinkedinadres(String linkedinadres) {
+	this.linkedinadres = linkedinadres;
+}
+
+public String getGithubadres() {
+	return githubadres;
+}
+
+public void setGithubadres(String githubadres) {
+	this.githubadres = githubadres;
+}
+
+public Set<InvulTaak> getInvultaak() {
+	return invultaak;
+}
+
+public void setInvultaak(Set<InvulTaak> invultaak) {
+	this.invultaak = invultaak;
+}
 
 
-    public InvulTaak getInvultaak() {
-        return invultaak;
-    }
 
-    public void setInvultaak(InvulTaak invultaak) {
-        this.invultaak = invultaak;
-    }
 
-    public List<Vragenlijst> getVragenlijst() {
-        return vragenlijst;
-    }
 
-    public void setVragenlijst(List<Vragenlijst> vragenlijst) {
-        this.vragenlijst = vragenlijst;
-    }
 }
