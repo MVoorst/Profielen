@@ -23,7 +23,7 @@ public class CVService {
 		return cvRepository.save(cv);
 	}
 	
-	public CV saveAsWord(CV cv) throws Docx4JException { //toegevoegd door Cris
+	public CV saveAsWord(CV cv) throws Docx4JException { //toegevoegd door Cris - aangepast door Arne
 	    WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
 	    MainDocumentPart mainDocument = wordMLPackage.getMainDocumentPart();
 	    mainDocument.addStyledParagraphOfText("Title", "Qien CV");

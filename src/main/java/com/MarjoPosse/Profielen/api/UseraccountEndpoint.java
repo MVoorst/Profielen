@@ -108,7 +108,7 @@ public class UseraccountEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response putVragen(Useraccount user) {
-		return Response.accepted(result.getId()).build();
+		return Response.accepted(user.getId()).build();
 	}
 	
 
