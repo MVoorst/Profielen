@@ -50,7 +50,7 @@ public class VragenlijstEndpoint {
 		return Response.status(Status.NOT_FOUND).build();
 		}
 	
-	@GET
+	@GET // test door marjolijntje
 	@Path("Hoppa")
 	public Response dit() {
 		vragenlijstService.huppakee();

@@ -42,7 +42,12 @@ public class VragenlijstService {
 		return vragenlijstRepository.existsById(id);
 	}
 	
-	public void huppakee () {
+	public void huppakee () { // hoppakee door marjoleijnnn
+		vragenlijstRepository.save(new Vragenlijst());
+		System.out.println("hoppa");
+	}
+
+	public void huppakee2 () { // hoppakee door marjoleijnnn
 		vragenlijstRepository.save(new Vragenlijst());
 		System.out.println("hoppa");
 	}

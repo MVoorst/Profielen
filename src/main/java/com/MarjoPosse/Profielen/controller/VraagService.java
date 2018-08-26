@@ -39,5 +39,11 @@ public class VraagService {
 	public boolean existsById(Long id) {
 		return vraagRepository.existsById(id);
 	}
+
+//	public void koppelingVraag(Vragenlijst lijst1){
+//		//dit is om de vragen met de vragenlijst te koppelen
+//		vraagRepository.save(new Vraag());
+//		System.out.println("hoppa");
+//	}
 }
 
