@@ -9,5 +9,5 @@ import com.MarjoPosse.Profielen.domein.Vragenlijst;
 
 @Component
 public interface VragenlijstRepository extends CrudRepository<Vragenlijst, Long>{
-	
+
 }

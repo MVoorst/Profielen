@@ -16,7 +16,7 @@ public class InvulTaak {
 	private Useraccount useraccount;
 	
 	@ManyToOne
-	private Vraag vragenlijst;
+	private Vraag vraag;
 	
 	@OneToOne
 	private Feedback feedback;
@@ -45,12 +45,12 @@ public class InvulTaak {
 		this.useraccount = useraccount;
 	}
 
-	public Vraag getVragenlijst() {
-		return vragenlijst;
+	public Vraag getVraag() {
+		return vraag;
 	}
 
-	public void setVragenlijst(Vraag vragenlijst) {
-		this.vragenlijst = vragenlijst;
+	public void setVragenlijst(Vraag vraag) {
+		this.vraag = vraag;
 	}
 
 	public Feedback getFeedback() {
