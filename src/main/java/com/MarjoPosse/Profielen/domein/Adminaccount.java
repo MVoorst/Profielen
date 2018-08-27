@@ -22,17 +22,6 @@ public class Adminaccount {
 	private String wachtwoord;
 
 
-	// One to many relaties
-	@OneToOne
-	Vragenlijst vragenlijst;
-
-	
-	public Vragenlijst getVragenlijst() {
-		return vragenlijst;
-	}
-	public void setVragenlijst(Vragenlijst vragenlijst) {
-		this.vragenlijst = vragenlijst;
-	}
 	public long getId() {
 		return id;
 	}

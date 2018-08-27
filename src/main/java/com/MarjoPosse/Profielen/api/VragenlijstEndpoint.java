@@ -42,7 +42,7 @@ public class VragenlijstEndpoint {
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getVragenById(@PathParam("id")Long id) {
-		Optional<Vragenlijst> optionalvragen=this.vragenlijstService.findById(id);
+		Optional<Vragenlijst> optionalvragen = this.vragenlijstService.findById(id);
 		if (vragenlijstService.existsById(id)){
 			Optional<Vragenlijst> vragenlijst = vragenlijstService.findById(id);
 			 return Response.ok(vragenlijst).build();
@@ -50,15 +50,22 @@ public class VragenlijstEndpoint {
 		return Response.status(Status.NOT_FOUND).build();
 		}
 	
+	@GET
+	@Path("Hoppa")
+	public Response dit() {
+		vragenlijstService.huppakee();
+		return Response.status(Status.ACCEPTED).build();
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response postVragen(Vragenlijst vragen){
 		Vragenlijst result = vragenlijstService.save(vragen);
-		return Response.accepted(result.getVraag1()).build();	
+		return Response.accepted(result.getId()).build();	
 	}
 
-	@PUT
+/*	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response putVragen(Vragenlijst vragen) {
@@ -72,7 +79,7 @@ public class VragenlijstEndpoint {
 		vragenlijstService.delete(vragenlijst);
 		return Response.accepted(vragenlijst.getVraag1()).build();
 	}
-	
+	*/
 	@DELETE //toegevoegd door Cris
 	@Path("{id}")
 	public Response deleteById(@PathParam("id") Long id) {
