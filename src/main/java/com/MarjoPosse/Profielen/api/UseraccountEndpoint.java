@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 
 import com.MarjoPosse.Profielen.Message.Message;
 import com.MarjoPosse.Profielen.controller.UseraccountService;
+import com.MarjoPosse.Profielen.domein.InvulTaak;
 import com.MarjoPosse.Profielen.domein.Useraccount;
 import com.MarjoPosse.Profielen.email.SendEmail;
 
@@ -105,6 +106,7 @@ public class UseraccountEndpoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response putVragen(Useraccount user) {
+		Useraccount result = useraccountService.save(user);
 		return Response.accepted(result.getId()).build();
 	}
 	
