@@ -53,16 +53,22 @@ public class InvulTaakEndpoint {
 		InvulTaak result = invultaakService.save(invultaak);
 		return Response.accepted(result.getId()).build();	
 	}
-	/*
+	
 	@POST
-	@Path("invul")
+	@Path("idvraag={idvraag}/{contentantwoord}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response postinvullen(InvulTaak invul) {
-		
-		return Response.ok(invultaak);
+	public Response postinvullen(@PathParam("idvraag")long vraagId, @PathParam("contentantwoord")String antwoord) {
+		Optional<Vraag> vraag = invultaakService.findByVraagId(vraagId);
+		if (invultaakService.existsByVraagId(vraagId)) {
+			Optional<Vraag> vraagFind = invultaakService.findByVraagId(vraagId);
+			Vraag vraagX = vraagFind.get();
+			return Response.accepted(invultaakService.addToVraag(vraagX, antwoord)).build();
+		}else {
+		return Response.status(Status.NOT_FOUND).build();
+		}
 	}
-	*/
+	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)

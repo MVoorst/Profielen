@@ -13,7 +13,7 @@ private long id;
 private String vragenlijstnaam;
 
 @OneToMany (fetch = FetchType.EAGER)
-private List<Vraag> vragen;
+private List<Vraag> vragen = new ArrayList();
 
 public long getId() {
 	return id;
