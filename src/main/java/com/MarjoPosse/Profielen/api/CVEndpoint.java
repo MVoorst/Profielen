@@ -67,10 +67,12 @@ public class CVEndpoint {
 	@POST //toegevoegd door Cris
 	@Path("ExportAsWord")
 	@Consumes(MediaType.APPLICATION_JSON_VALUE)
-	@Produces(MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	public Response exportAsWord(CV cv) throws Docx4JException {
 		cvService.saveAsWord(cv);
-	    return Response.accepted(new Message("Succes")).build();
+		CV result = cvService.save(cv);
+		System.out.println("CV maken is gelukt!");
+		return Response.accepted(result).build();
 	}
 
 //	@POST
