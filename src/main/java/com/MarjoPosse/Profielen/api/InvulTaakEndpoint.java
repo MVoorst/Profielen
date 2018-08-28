@@ -55,15 +55,17 @@ public class InvulTaakEndpoint {
 	}
 	
 	@POST
-	@Path("idvraag={idvraag}/{contentantwoord}")
+	@Path("idvraag={idvraag}/iduser={idUser}/{contentantwoord}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response postinvullen(@PathParam("idvraag")long vraagId, @PathParam("contentantwoord")String antwoord) {
+	public Response postinvullen(@PathParam("idvraag")long vraagId, @PathParam("idUser")long userID, @PathParam("contentantwoord")String antwoord) {
 		Optional<Vraag> vraag = invultaakService.findByVraagId(vraagId);
 		if (invultaakService.existsByVraagId(vraagId)) {
 			Optional<Vraag> vraagFind = invultaakService.findByVraagId(vraagId);
 			Vraag vraagX = vraagFind.get();
-			return Response.accepted(invultaakService.addToVraag(vraagX, antwoord)).build();
+			Optional<Useraccount> userFind = invultaakService.findByUserId(userID);
+			Useraccount userX = userFind.get();
+			return Response.accepted(invultaakService.addToVraag(vraagX, userX, antwoord)).build();
 		}else {
 		return Response.status(Status.NOT_FOUND).build();
 		}
