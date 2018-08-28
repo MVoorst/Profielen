@@ -13,6 +13,13 @@ public class InvulTaakService {
 	
 	@Autowired
 	private InvulTaakRepository invultaakRepository;
+	
+	@Autowired
+	private VraagRepository vraagRepository;
+	
+	@Autowired
+	private UseraccountRepository useraccountRepository;
+	
 
 	public InvulTaak save(InvulTaak invultaak){
 		return invultaakRepository.save(invultaak);
@@ -37,4 +44,30 @@ public class InvulTaakService {
 	public boolean existsById(Long id) {	
 		return invultaakRepository.existsById(id);
 	}
+	
+	public InvulTaak addToVraag (Vraag vraag, Useraccount user, String antwoord) {					//toegevoegd door Marjolijn
+		InvulTaak invul = new InvulTaak();
+		invul.setAntwoord(antwoord);
+		invul.setVragenlijst(vraag);
+		invul.setUseraccount(user);
+		invultaakRepository.save(invul);
+		return invul;
+	}
+	
+	public Optional<Vraag> findByVraagId(Long id) {	//toegevoegd door M
+		return vraagRepository.findById(id);
+	}
+	
+	public boolean existsByVraagId(Long id) {	//toegevoegd door M
+		return vraagRepository.existsById(id);
+	}
+	
+	public Optional<Useraccount> findByUserId(Long id) {	//toegevoegd door M
+		return useraccountRepository.findById(id);
+	}
+	
+	public boolean existsByUserId(Long id) {	//toegevoegd door M
+		return useraccountRepository.existsById(id);
+	}
+	
 }
