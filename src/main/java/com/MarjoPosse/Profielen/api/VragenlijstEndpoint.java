@@ -51,6 +51,7 @@ public class VragenlijstEndpoint {
 		return Response.status(Status.NOT_FOUND).build();
 		}
 	
+
 	@POST
 	@Path("id={idvl}/{contentvraag}")
 	@Consumes(MediaType.APPLICATION_JSON)

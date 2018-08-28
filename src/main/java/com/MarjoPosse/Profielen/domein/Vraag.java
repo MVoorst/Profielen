@@ -4,12 +4,15 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 public class Vraag{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private long id;
 	private String contentvraag;
 
+	@OneToOne
+	Vragenlijst vragenlijst;
 //	@ManyToOne
 //	private Vragenlijst vragenlijst;
 
@@ -29,6 +32,15 @@ public class Vraag{
 		this.contentvraag = contentvraag;
 	}
 
+//<<<<<<< HEAD
+//	public Vragenlijst getVragenlijst() {
+//		return vragenlijst;
+//	}
+//
+//	public void setVragenlijst(Vragenlijst vragenlijst) {
+//		this.vragenlijst = vragenlijst;
+//	}
+//=======
 //	public Vragenlijst getVragenlijst() {
 //		return vragenlijst;
 //	}
@@ -37,4 +49,5 @@ public class Vraag{
 //		this.vragenlijst = vragenlijst;
 //	}
 //	
+
 }

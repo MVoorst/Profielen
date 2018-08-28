@@ -13,6 +13,12 @@ public class Feedback {
 	private String inhoud;
 	
 
+//<<<<<<< HEAD
+//
+//	@ManyToOne
+//	Useraccount useraccount;
+//=======
+//>>>>>>> master
 	@ManyToOne
 	private Adminaccount adminaccount;
 
@@ -35,6 +41,17 @@ public class Feedback {
 		this.inhoud = inhoud;
 	}
 
+//<<<<<<< HEAD
+//	public Useraccount getUseraccount() {
+//		return useraccount;
+//	}
+//
+//	public void setUseraccount(Useraccount useraccount) {
+//		this.useraccount = useraccount;
+//	}
+//
+//
+//=======
 	public Adminaccount getAdminaccount() {
 		return adminaccount;
 	}
@@ -51,5 +68,5 @@ public class Feedback {
 		this.invulTaak = invulTaak;
 	}
 	
-	
+
 }
