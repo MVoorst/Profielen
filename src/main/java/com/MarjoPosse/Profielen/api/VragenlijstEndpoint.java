@@ -3,6 +3,7 @@ package com.MarjoPosse.Profielen.api;
 import java.util.List;
 import java.util.Optional;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -50,11 +51,20 @@ public class VragenlijstEndpoint {
 		return Response.status(Status.NOT_FOUND).build();
 		}
 	
-	@GET // test door marjolijntje
-	@Path("Hoppa")
-	public Response dit() {
-		vragenlijstService.huppakee();
-		return Response.status(Status.ACCEPTED).build();
+
+	@POST
+	@Path("id={idvl}/{contentvraag}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response postVragenInLijst(@PathParam("idvl")long vragenlijstId, @PathParam("contentvraag")String vraag) {
+		Optional<Vragenlijst> vragenlijst = vragenlijstService.findById(vragenlijstId);
+		if (vragenlijstService.existsById(vragenlijstId)) {
+			Optional<Vragenlijst> vragenlijstFind = vragenlijstService.findById(vragenlijstId);
+			Vragenlijst vragenlijstJep = vragenlijstFind.get();
+			return Response.accepted(vragenlijstService.addToVragenlijst(vragenlijstJep, vraag)).build();
+		} else {
+		return Response.status(Status.NOT_FOUND).build();
+		}
 	}
 	
 	@POST

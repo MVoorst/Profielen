@@ -14,6 +14,9 @@ public class VragenlijstService {
 	
 	@Autowired
 	private VragenlijstRepository vragenlijstRepository;
+	
+	@Autowired
+	private VraagRepository vragenRepository;
 
 	public Vragenlijst save(Vragenlijst vragenlijst){
 		return vragenlijstRepository.save(vragenlijst);
@@ -42,14 +45,15 @@ public class VragenlijstService {
 		return vragenlijstRepository.existsById(id);
 	}
 	
-	public void huppakee () { // hoppakee door marjoleijnnn
-		vragenlijstRepository.save(new Vragenlijst());
+	public Vragenlijst addToVragenlijst (Vragenlijst vragenlijst, String vraag) {
+		Vraag nvraag = new Vraag();
+		nvraag.setContentvraag(vraag);
+		vragenRepository.save(nvraag);
+		vragenlijst.getVragen().add(nvraag);	
+		vragenlijstRepository.save(vragenlijst);
 		System.out.println("hoppa");
-	}
-
-	public void huppakee2 () { // hoppakee door marjoleijnnn
-		vragenlijstRepository.save(new Vragenlijst());
-		System.out.println("hoppa");
+		return vragenlijst;
+		
 	}
 	
 }
