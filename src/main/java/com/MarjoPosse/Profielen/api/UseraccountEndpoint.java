@@ -1,5 +1,6 @@
 package com.MarjoPosse.Profielen.api;
 
+import java.security.SecureRandom;
 import java.util.Optional;
 import java.util.Random;
 
@@ -23,6 +24,7 @@ import com.MarjoPosse.Profielen.Message.Message;
 import com.MarjoPosse.Profielen.controller.UseraccountService;
 import com.MarjoPosse.Profielen.domein.InvulTaak;
 import com.MarjoPosse.Profielen.domein.Useraccount;
+import com.MarjoPosse.Profielen.domein.Vraag;
 import com.MarjoPosse.Profielen.email.SendEmail;
 
 @Path("useraccount")
@@ -70,14 +72,16 @@ public class UseraccountEndpoint {
 		System.out.println("In useraccount post" + login.getEmailadres());
 		String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 		StringBuilder sbGeneratedPassword = new StringBuilder();
-		Random random = new Random();
-	    for (int i = 0; i < 6; i++) {
-	        sbGeneratedPassword.append(characters.charAt(random.nextInt(characters.length())));
-	     }
-		login.setWachtwoord(sbGeneratedPassword.toString());  
+		Random random = new SecureRandom();
+		for (int i = 0; i < 10; i++) {
+			sbGeneratedPassword.append(characters.charAt(random.nextInt(characters.length())));
+		}
+		login.setWachtwoord(sbGeneratedPassword.toString());
 		useraccountService.save (login);
 		try {
-			sendEmail.sendEmail(login.getEmailadres(),"Welkom bij Qien","Beste "+login.getVoornaam()+",\nEr is een account aangemaakt voor u.\nDit is uw wachtwoord: "+sbGeneratedPassword+".\nSucces met het invullen van de vragen.\n\nGroet,\nQien BV");
+			if(login.getEmailadres() != null) {
+				sendEmail.sendEmail(login.getEmailadres(), "Welkom bij Qien", "Beste " + login.getVoornaam() + ",\nEr is een account aangemaakt voor u.\nDit is uw wachtwoord: " + sbGeneratedPassword + ".\nSucces met het invullen van de vragen.\n\nGroet,\nQien BV");
+			}
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
@@ -100,6 +104,23 @@ public class UseraccountEndpoint {
 			}
 		}
 	}
+	
+	/*@POST 		// by Marjolijn :)
+	@Path ("idUser={idvraag}/{antwoord}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response antwoordUser(@PathParam("idUser")long UserId, @PathParam("antwoord")String antwoord) {
+		Optional<Useraccount> user= useraccountService.findById(UserId);
+		if (useraccountService.existsById(UserId)) {
+			Optional<Useraccount> userFind = useraccountService.findById(UserId);
+			Useraccount userFound = userFind.get();
+			return Response.accepted(useraccountService.addToUser(userFound, antwoord)).build();
+		}else {
+		return Response.status(Status.NOT_FOUND).build();
+		}
+	}*/
+	
+	
 	
 	@PUT	//by Marjolijn :)
 	@Path("naw")
