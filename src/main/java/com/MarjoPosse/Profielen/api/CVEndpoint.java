@@ -39,7 +39,7 @@ public class CVEndpoint {
 	
 	@Autowired
 	private CVService cvService;
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON_VALUE)
 	public Response listGroep(){
@@ -73,30 +73,30 @@ public class CVEndpoint {
 	    return Response.accepted(new Message("Succes")).build();
 	}
 
-	@POST
-	@Path("docx")
-	@Produces(MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	public Response generateDocxFile(CV cv) throws Docx4JException {
-		WordprocessingMLPackage wordPackage = WordprocessingMLPackage.createPackage();
-		MainDocumentPart mainDocumentPart = wordPackage.getMainDocumentPart();
-		mainDocumentPart.addStyledParagraphOfText("Title", "Hello World!");
-		mainDocumentPart.addParagraphOfText("Welcome To Baeldung");
-
-		File exportFile = new File(cv.getUseraccount().getVoornaam()+".docx");
-		wordPackage.save(exportFile);
-
-		// Try to determine file's content type
-
-		return Response.ok(exportFile).build();
-
-//        Resource r = new FileSystemResource(exportFile);
-//        String contentType = "application/octet-stream";
-//        return ResponseEntity.ok()
-//                .contentType(MediaType.valueOf(contentType))
-//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + exportFile.getName() + "\"")
-//                .body(exportFile);
-
-	}
+//	@POST
+//	@Path("docx") // van Stef
+//	@Produces(MediaType.APPLICATION_OCTET_STREAM_VALUE)
+//	public Response generateDocxFile(CV cv) throws Docx4JException {
+//		WordprocessingMLPackage wordPackage = WordprocessingMLPackage.createPackage();
+//		MainDocumentPart mainDocumentPart = wordPackage.getMainDocumentPart();
+//		mainDocumentPart.addStyledParagraphOfText("Title", "Hello World!");
+//		mainDocumentPart.addParagraphOfText("Welcome To Baeldung");
+//
+//		File exportFile = new File(cv.getUseraccount().getVoornaam()+".docx");
+//		wordPackage.save(exportFile);
+//
+//		// Try to determine file's content type
+//
+//		return Response.ok(exportFile).build();
+//
+////        Resource r = new FileSystemResource(exportFile);
+////        String contentType = "application/octet-stream";
+////        return ResponseEntity.ok()
+////                .contentType(MediaType.valueOf(contentType))
+////                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + exportFile.getName() + "\"")
+////                .body(exportFile);
+//
+//	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON_VALUE)

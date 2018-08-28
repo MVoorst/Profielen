@@ -20,7 +20,7 @@ public class CV {
 	private int hoeveelheid;
 	
 	@OneToOne
-	Useraccount useraccount;
+	private Useraccount useraccount;
 	
 	public Useraccount getUseraccount() {
 		return useraccount;
