@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 import com.MarjoPosse.Profielen.Message.Message;
 import com.MarjoPosse.Profielen.controller.UseraccountService;
 import com.MarjoPosse.Profielen.domein.Useraccount;
+import com.MarjoPosse.Profielen.domein.Vraag;
 import com.MarjoPosse.Profielen.email.SendEmail;
 
 @Path("useraccount")
@@ -99,6 +100,23 @@ public class UseraccountEndpoint {
 			}
 		}
 	}
+	
+	/*@POST 		// by Marjolijn :)
+	@Path ("idUser={idvraag}/{antwoord}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response antwoordUser(@PathParam("idUser")long UserId, @PathParam("antwoord")String antwoord) {
+		Optional<Useraccount> user= useraccountService.findById(UserId);
+		if (useraccountService.existsById(UserId)) {
+			Optional<Useraccount> userFind = useraccountService.findById(UserId);
+			Useraccount userFound = userFind.get();
+			return Response.accepted(useraccountService.addToUser(userFound, antwoord)).build();
+		}else {
+		return Response.status(Status.NOT_FOUND).build();
+		}
+	}*/
+	
+	
 	
 	@PUT	//by Marjolijn :)
 	@Path("naw")
