@@ -58,7 +58,7 @@ public class CVService {
 	public CV saveAsWord(CV cv) throws Docx4JException { //toegevoegd door Cris - aangepast door Arne
 		// Eerst de fields aanmaken voor in het CV
 		String voornaam, tussenvoegsel, leeftijd, achternaam, woonplaats, githubadres, vraag, antwoord, motivatie, iqtest, project, opleiding, diploma, opleidingVan, opleidingTot, school, functie1, functie2, functie3, werkervaring1, werkervaring2, werkervaring3, bedrijf1, bedrijf2, bedrijf3, werkervaringVan1, werkervaringVan2, werkervaringVan3, werkervaringTot1, werkervaringTot2, werkervaringTot3, werkervaringSubtitel1, werkervaringSubtitel2, werkervaringSubtitel3;
-		int geboortedatum;
+		String geboortedatum;
 
 
 //		String name; // alleen met template - Omweg

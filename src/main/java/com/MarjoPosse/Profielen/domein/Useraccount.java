@@ -16,9 +16,9 @@ private long id;
 		private String voornaam;
 		private String tussenvoegsel;
 		private String achternaam;
-		private boolean geslacht;
-		private int geboortedatum;
-		private int huisnummer;
+		private String geslacht;
+		private String geboortedatum;
+		private String huisnummer;
 		private String straat;
 		private String postcode;
 		private String woonplaats;
@@ -113,27 +113,27 @@ public void setAchternaam(String achternaam) {
 	this.achternaam = achternaam;
 }
 
-public boolean isGeslacht() {
+public String isGeslacht() {
 	return geslacht;
 }
 
-public void setGeslacht(boolean geslacht) {
+public void setGeslacht(String geslacht) {
 	this.geslacht = geslacht;
 }
 
-public int getGeboortedatum() {
+public String getGeboortedatum() {
 	return geboortedatum;
 }
 
-public void setGeboortedatum(int geboortedatum) {
+public void setGeboortedatum(String geboortedatum) {
 	this.geboortedatum = geboortedatum;
 }
 
-public int getHuisnummer() {
+public String getHuisnummer() {
 	return huisnummer;
 }
 
-public void setHuisnummer(int huisnummer) {
+public void setHuisnummer(String huisnummer) {
 	this.huisnummer = huisnummer;
 }
 
